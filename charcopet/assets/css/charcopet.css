@@ -75,10 +75,9 @@ h1 em,h2 em{
 .lead{font-size:17.5px;font-weight:400;color:#5c5b60;max-width:640px;text-wrap:pretty}
 
 .eyebrow{
-  display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.16em;
+  font-size:11px;font-weight:800;letter-spacing:.16em;
   text-transform:uppercase;color:var(--forte-blue-ink);margin-bottom:12px;
 }
-.eyebrow::before{content:'';width:20px;height:1.5px;background:currentColor;flex:none}
 .micro-label{
   display:inline-flex;align-items:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--forte-blue-ink);font-weight:800;
@@ -220,7 +219,7 @@ footer.site-footer{background:var(--forte-black);color:rgba(255,255,255,.78);fon
     linear-gradient(180deg,#fff 0%,var(--forte-grey-tint) 100%);
 }
 .cp-hero__grid{display:grid;grid-template-columns:minmax(0,480px) minmax(0,1fr);gap:84px;align-items:center}
-.cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin:0 0 20px}
+.cp-hero h1{font-size:clamp(36px,4.6vw,58px);line-height:1.14;margin:0 0 20px}
 .cp-hero .lead{font-size:clamp(17.5px,1.5vw,20px);max-width:440px;margin-bottom:30px}
 
 .cp-lockup{padding-top:26px;border-top:1px solid var(--cp-taupe-line);margin-bottom:34px}
@@ -240,9 +239,9 @@ footer.site-footer{background:var(--forte-black);color:rgba(255,255,255,.78);fon
 .cp-hero .btn-ghost{background:rgba(65,64,66,.075)}
 .cp-hero .btn-ghost:hover{background:rgba(65,64,66,.13)}
 
-/* Hero visual — photo + pack + offer roundel share one coordinate system, so
-   every child is positioned in % of the supplied banner artwork. */
-.cp-hero__visual{position:relative;width:100%;aspect-ratio:1268/1050;container-type:inline-size}
+/* Hero visual — photo and pack share one coordinate system, so every child is
+   positioned in % of the supplied banner artwork. */
+.cp-hero__visual{position:relative;width:100%;aspect-ratio:1268/1050}
 .cp-hero__shape{position:absolute;clip-path:url(#cpHeroClip);pointer-events:none}
 .cp-hero__shape--tint{inset:-7% 7% 9% -8%;background:linear-gradient(150deg,rgba(0,171,230,.13),rgba(0,171,230,.03) 70%)}
 .cp-hero__shape--blue{inset:6% -4.5% -5.5% 7%;background:var(--grad)}
@@ -253,18 +252,48 @@ footer.site-footer{background:var(--forte-black);color:rgba(255,255,255,.78);fon
   position:absolute;left:-12.57%;top:77.58%;width:49.7%;height:auto;max-width:none;
   filter:drop-shadow(0 14px 16px rgba(35,34,39,.24)) drop-shadow(0 2px 3px rgba(35,34,39,.16));
 }
-.cp-hero__offer{
-  position:absolute;left:42.11%;top:12.43%;width:18.8%;aspect-ratio:1;transform:translate(-50%,-50%);
-  border-radius:50%;background:#fff;color:#c20a0a;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:.95;
-  box-shadow:0 12px 30px rgba(35,34,39,.2),0 0 0 1px rgba(35,34,39,.04);
-  font-weight:900;text-align:center;
-}
-.cp-hero__offer b{font-size:7cqw;letter-spacing:-.02em}
-.cp-hero__offer span{font-size:3.3cqw;letter-spacing:.04em;margin-top:.5cqw}
 
 /* ---------- Key facts strip (taupe variant of the site stats strip) ---------- */
 .cp-facts{background:var(--cp-grad-taupe)}
+
+/* ---------- First screen: hero + key facts ----------
+   On desktop the two blocks share the viewport height, so the facts strip is
+   visible without scrolling. --k runs from 0 on a 600px-high viewport to 270px
+   on 870px and taller; type, spacing and the photo all scale along with it. */
+.cp-first{--cp-vh:100vh}
+@supports (height:100svh){.cp-first{--cp-vh:100svh}}
+@media (min-width:981px){
+  .cp-first{
+    --k:clamp(0px,var(--cp-vh) - 600px,270px);
+    --cp-hero-pt:calc(16px + var(--k) * .1333);
+    --cp-hero-pb:calc(26px + var(--k) * .1704);
+    --cp-facts-h:calc(122px + var(--k) * .0889);            /* height of the facts strip */
+    --cp-hero-room:calc(var(--cp-vh) - var(--header-h) - 1px - var(--cp-facts-h) - var(--cp-hero-pt) - var(--cp-hero-pb));
+    display:flex;flex-direction:column;
+    min-height:min(var(--cp-vh) - var(--header-h) - 1px,800px);
+  }
+  .cp-first .cp-hero{flex:1 0 auto;display:flex;align-items:center;padding:var(--cp-hero-pt) 0 var(--cp-hero-pb)}
+  .cp-first .cp-hero__grid{width:100%}
+  .cp-first .eyebrow{margin-bottom:calc(6px + var(--k) * .0222)}
+  .cp-first h1{font-size:min(4.6vw,calc(38px + var(--k) * .0667));margin-bottom:calc(8px + var(--k) * .037)}
+  .cp-first .lead{font-size:clamp(16px,1.5vw,calc(16px + var(--k) * .0148));margin-bottom:calc(12px + var(--k) * .0519)}
+  .cp-first .cp-lockup{padding-top:calc(12px + var(--k) * .0444);margin-bottom:calc(14px + var(--k) * .0593)}
+  .cp-first .cp-wordmark{font-size:clamp(28px,3.1vw,calc(28px + var(--k) * .0444))}
+  .cp-first .cp-lockup__desc{font-size:calc(15px + var(--k) * .0037);margin-top:calc(3px + var(--k) * .0185)}
+  .cp-first .cp-keymsg{font-size:calc(16px + var(--k) * .0037);margin-top:calc(8px + var(--k) * .037)}
+  .cp-first .cp-hero .btn{padding:calc(11px + var(--k) * .0148) calc(24px + var(--k) * .0148)}
+  /* the photo keeps its proportions and takes whatever height is left */
+  .cp-first .cp-hero__visual{justify-self:end;width:min(100%,max(400px,(var(--cp-hero-room) - 6px) * 1.2076))}
+  .cp-first .cp-facts .wrap{padding-top:calc(18px + var(--k) * .0444);padding-bottom:calc(18px + var(--k) * .0444)}
+}
+/* short laptop screens: the key message runs on one line */
+@media (min-width:981px) and (max-height:719px){
+  .cp-first .cp-keymsg b{display:inline}
+}
+/* narrow desktop: both hero buttons stay on one row */
+@media (min-width:981px) and (max-width:1180px){
+  .cp-first .cp-hero .btn{font-size:14.5px;padding-left:20px;padding-right:20px}
+}
 
 /* ---------- Sticky in-page navigation ---------- */
 .cp-subnav{

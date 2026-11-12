@@ -29,7 +29,6 @@
   · Videos: put a YouTube/Vimeo embed URL or an .mp4 path into data-video="" on
     the two .cp-video__frame buttons; the "coming soon" state disappears and the
     button opens the player.
-  · Launch-offer roundel in the hero: delete the .cp-hero__offer element to remove.
 -->
 
 <script type="application/ld+json">
@@ -96,6 +95,9 @@
 
 <main id="main">
 
+<!-- First screen: hero + key facts share the viewport height (see .cp-first in the CSS) -->
+<div class="cp-first">
+
 <!-- ===================== HERO ===================== -->
 <section class="cp-hero" aria-labelledby="cp-hero-title">
   <div class="wrap cp-hero__grid">
@@ -126,7 +128,6 @@
         <img src="assets/img/hero-dog.webp" width="1268" height="1050" alt="A curious cocker spaniel sniffing a bar of chocolate left on the living-room floor" fetchpriority="high" decoding="async">
       </div>
       <img class="cp-hero__pack" src="assets/img/charcopet-pack.webp" width="1188" height="448" alt="CharcoPet carton with two 30 ml dial-dose syringes" decoding="async">
-      <p class="cp-hero__offer" aria-label="10% off"><b aria-hidden="true">10%</b><span aria-hidden="true">OFF</span></p>
     </div>
   </div>
 </section>
@@ -140,6 +141,8 @@
     <div class="stat reveal d3"><b><span data-count="30">30</span><small>kg</small></b><span>Dog covered by one carton (2 × 30 ml syringes)</span></div>
   </div>
 </section>
+
+</div><!-- /.cp-first -->
 
 <!-- ===================== IN-PAGE NAVIGATION ===================== -->
 <nav class="cp-subnav" id="cpSubnav" aria-label="CharcoPet page sections">
