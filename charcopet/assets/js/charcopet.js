@@ -72,24 +72,6 @@
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---------- Count-up for the key facts ---------- */
-  var counters = $$('[data-count]');
-  if ('IntersectionObserver' in window && !reduceMotion && counters.length) {
-    var cio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var el = e.target, end = +el.dataset.count, dur = 1200, t0 = performance.now();
-        (function tick(t) {
-          var p = Math.min((t - t0) / dur, 1);
-          el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
-          if (p < 1) requestAnimationFrame(tick);
-        })(t0);
-        cio.unobserve(el);
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (el) { el.textContent = '0'; cio.observe(el); });
-  }
-
   /* ---------- In-page navigation: scroll-spy ---------- */
   var links = $$('#cpSubnavLinks a');
   var targets = links.map(function (a) { return doc.getElementById(a.getAttribute('href').slice(1)); });

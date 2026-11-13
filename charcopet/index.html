@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CharcoPet® | 50% Activated Charcoal Gel for Dogs, Cats &amp; Exotic Pets | Forte Healthcare</title>
+<title>CharcoPet® | 50% Activated Charcoal Gel for Dogs &amp; Cats | Forte Healthcare</title>
 <meta name="description" content="CharcoPet combines a high activated charcoal concentration with a ready-to-use gel formulation and precision-dosed syringe. 50% activated charcoal: more charcoal, less to administer.">
 <meta name="theme-color" content="#00abe6">
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Forte Healthcare">
-<meta property="og:title" content="CharcoPet® | 50% activated charcoal gel for dogs, cats &amp; exotic pets">
+<meta property="og:title" content="CharcoPet® | 50% activated charcoal gel for dogs &amp; cats">
 <meta property="og:description" content="More charcoal. Less to administer. A ready-to-use activated charcoal gel in a 30 ml dial-dose syringe, two syringes per carton.">
 <meta property="og:image" content="assets/img/og-charcopet.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,12 +18,16 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23414042'/%3E%3Cpath d='M20 44 L30 30 H46 L38 40 H26 L20 48Z' fill='%2300abe6'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/Dax-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Dax-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/hero-dog.webp" as="image" fetchpriority="high">
+<link rel="preload" href="assets/img/hero-banner.webp" as="image" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/charcopet.css">
 <script>document.documentElement.classList.add('js')</script>
 
 <!--
   INTEGRATION NOTES
+  · Hero banner: assets/img/hero-banner.webp is TEMPORARY (the first supplied
+    banner with its lettering removed). Replace the file with the final banner;
+    if its proportions or composition differ, adjust the three --cp-hero-*
+    settings at the top of the hero block in charcopet.css.
   · Header/footer links point at the Forte concept site (absolute URLs) so this
     preview works on its own. Inside the site, swap them for relative paths.
   · Videos: put a YouTube/Vimeo embed URL or an .mp4 path into data-video="" on
@@ -55,12 +59,9 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- Shared clip shape for the hero photo: the Forte 60° edge with rounded corners -->
+<!-- Shared icons -->
 <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
   <defs>
-    <clipPath id="cpHeroClip" clipPathUnits="objectBoundingBox">
-      <path d="M.5962 0 L.9874 0 Q1 0 1 .0152 L1 .8571 Q1 1 .8817 1 L.0217 1 Q.0028 1 .0121 .9802 L.419 .1239 Q.4779 0 .5962 0 Z"/>
-    </clipPath>
     <symbol id="cpArrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="cpPaw" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/></g></symbol>
     <symbol id="cpSyringe" viewBox="0 0 230 34"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="13" width="18" height="8" rx="3"/><rect x="20" y="10" width="6" height="14" rx="2"/><rect x="26" y="6" width="128" height="22" rx="4"/><rect x="29" y="9" width="122" height="16" rx="2" fill="currentColor" stroke="none" opacity=".9"/><path d="M155 2v30" stroke-width="3"/><rect x="157" y="12" width="56" height="10" rx="2"/><path d="M215 6v22" stroke-width="3"/></g></symbol>
@@ -95,54 +96,20 @@
 
 <main id="main">
 
-<!-- First screen: hero + key facts share the viewport height (see .cp-first in the CSS) -->
-<div class="cp-first">
-
-<!-- ===================== HERO ===================== -->
+<!-- ===================== HERO =====================
+     One static banner across the whole first screen, with live text over it. -->
 <section class="cp-hero" aria-labelledby="cp-hero-title">
-  <div class="wrap cp-hero__grid">
+  <div class="cp-hero__media">
+    <img src="assets/img/hero-banner.webp" width="2000" height="1050" alt="A curious cocker spaniel sniffing a bar of chocolate on the living-room floor, with the CharcoPet carton and two 30 ml syringes in the foreground" fetchpriority="high" decoding="async">
+  </div>
+  <div class="wrap cp-hero__in">
     <div class="cp-hero__copy">
-      <p class="eyebrow reveal">New from Forte Healthcare</p>
-      <h1 class="reveal d1" id="cp-hero-title">We love their<br><em>curiosity.</em></h1>
-      <p class="lead reveal d2">But when it gets them into trouble, how we care for them matters.</p>
-
-      <div class="cp-lockup reveal d3">
-        <p class="cp-wordmark">CharcoPet<sup>®</sup></p>
-        <p class="cp-lockup__desc">Activated charcoal gel for dogs, cats &amp; exotic pets</p>
-        <p class="cp-keymsg"><b>50% activated charcoal.</b> More charcoal. Less to administer.</p>
-      </div>
-
-      <div class="cp-hero__actions reveal d4">
-        <a href="https://forte-healthcare-concept.forte-health-4559.chatgpt.site/tm-finder.html" class="btn btn-primary">
-          Find your Territory Manager
-          <svg width="16" height="16" aria-hidden="true"><use href="#cpArrow"/></svg>
-        </a>
-        <a href="#what-is-charcopet" class="btn btn-ghost">What is CharcoPet?</a>
-      </div>
-    </div>
-
-    <div class="cp-hero__visual reveal d2">
-      <span class="cp-hero__shape cp-hero__shape--tint" aria-hidden="true"></span>
-      <span class="cp-hero__shape cp-hero__shape--blue" aria-hidden="true"></span>
-      <div class="cp-hero__photo">
-        <img src="assets/img/hero-dog.webp" width="1268" height="1050" alt="A curious cocker spaniel sniffing a bar of chocolate left on the living-room floor" fetchpriority="high" decoding="async">
-      </div>
-      <img class="cp-hero__pack" src="assets/img/charcopet-pack.webp" width="1188" height="448" alt="CharcoPet carton with two 30 ml dial-dose syringes" decoding="async">
+      <h1 class="reveal" id="cp-hero-title">We love their<br><em>curiosity.</em></h1>
+      <p class="lead reveal d1">But when it gets them into trouble, how we care for them matters.</p>
+      <p class="cp-keymsg reveal d2"><b>50% activated charcoal.</b> More charcoal. Less to administer.</p>
     </div>
   </div>
 </section>
-
-<!-- ===================== KEY FACTS ===================== -->
-<section class="stats cp-facts" aria-label="CharcoPet key facts">
-  <div class="wrap">
-    <div class="stat reveal"><b><span data-count="50">50</span>%</b><span>Activated charcoal: a high charcoal content per ml</span></div>
-    <div class="stat reveal d1"><b><span data-count="2">2</span><small>ml/kg</small></b><span>Bodyweight, administered orally</span></div>
-    <div class="stat reveal d2"><b><span data-count="15">15</span><small>kg</small></b><span>Dog covered by one full 30 ml syringe</span></div>
-    <div class="stat reveal d3"><b><span data-count="30">30</span><small>kg</small></b><span>Dog covered by one carton (2 × 30 ml syringes)</span></div>
-  </div>
-</section>
-
-</div><!-- /.cp-first -->
 
 <!-- ===================== IN-PAGE NAVIGATION ===================== -->
 <nav class="cp-subnav" id="cpSubnav" aria-label="CharcoPet page sections">
@@ -194,29 +161,22 @@
         </ol>
       </div>
 
-      <div class="cp-stage reveal d2">
-        <span class="cp-stage__num" aria-hidden="true">50%</span>
-        <span class="cp-stage__band" aria-hidden="true"></span>
-        <img class="cp-stage__pack" src="assets/img/charcopet-pack.webp" width="1188" height="448" alt="CharcoPet activated charcoal gel: carton and two 30 ml dial-dose syringes" loading="lazy" decoding="async">
-        <span class="cp-chip cp-chip--a"><i></i>50% activated charcoal</span>
-        <span class="cp-chip cp-chip--b"><i></i>Dial-dose syringe</span>
-        <span class="cp-chip cp-chip--c"><i></i>2 × 30 ml per carton</span>
-      </div>
+      <!-- Product video (placeholder until the film is supplied) -->
+      <figure class="cp-video cp-video--product reveal d2">
+        <button class="cp-video__frame" type="button" data-video="" data-video-title="What is CharcoPet? Key benefits">
+          <span class="cp-video__bg" aria-hidden="true"></span>
+          <img class="cp-video__art" src="assets/img/charcopet-pack.webp" width="1188" height="448" alt="" loading="lazy" decoding="async">
+          <span class="cp-video__soon">Video coming soon</span>
+          <span class="cp-video__meta">
+            <span class="cp-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.8v16.4a.8.8 0 0 0 1.2.7l13.4-8.2a.8.8 0 0 0 0-1.4L7.2 3.1A.8.8 0 0 0 6 3.8Z" fill="currentColor"/></svg></span>
+            <span class="cp-video__text">
+              <span class="micro-label">Product video</span>
+              <span class="cp-video__title">What is CharcoPet? <b>Key benefits</b></span>
+            </span>
+          </span>
+        </button>
+      </figure>
     </div>
-
-    <!-- Product video (placeholder until the film is supplied) -->
-    <figure class="cp-video cp-video--product reveal">
-      <button class="cp-video__frame" type="button" data-video="" data-video-title="What is CharcoPet? Key benefits">
-        <span class="cp-video__bg" aria-hidden="true"></span>
-        <img class="cp-video__art" src="assets/img/charcopet-pack.webp" width="1188" height="448" alt="" loading="lazy" decoding="async">
-        <span class="cp-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.8v16.4a.8.8 0 0 0 1.2.7l13.4-8.2a.8.8 0 0 0 0-1.4L7.2 3.1A.8.8 0 0 0 6 3.8Z" fill="currentColor"/></svg></span>
-        <span class="cp-video__meta">
-          <span class="micro-label">Product video</span>
-          <span class="cp-video__title">What is CharcoPet? <b>Key benefits</b></span>
-        </span>
-        <span class="cp-video__soon">Video coming soon</span>
-      </button>
-    </figure>
   </div>
 </section>
 
@@ -237,30 +197,12 @@
           <h3>High concentration</h3>
           <p>With 50% activated charcoal, CharcoPet delivers a high charcoal concentration per ml, minimising the volume of administration and reducing handling stress.</p>
         </div>
-        <div class="cp-compare">
-          <div class="cp-compare__row">
-            <span>CharcoPet</span>
-            <span class="cp-compare__track"><i class="cp-compare__bar" style="--w:100%"></i></span>
-            <span class="cp-compare__val">50%</span>
-          </div>
-          <div class="cp-compare__row is-ref">
-            <span>20% activated charcoal product</span>
-            <span class="cp-compare__track"><i class="cp-compare__bar" style="--w:40%"></i></span>
-            <span class="cp-compare__val">20%</span>
-          </div>
-          <p class="cp-compare__note"><b>2.5×</b> the concentration of a 20% activated charcoal product.*</p>
-          <p class="cp-footnote">*Comparison of activated charcoal content: 50% vs 20%.</p>
-        </div>
       </article>
 
       <article class="cp-card cp-card--pack reveal d1">
         <span class="cp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
         <h3>2 × 30 ml syringe pack</h3>
         <p>Each syringe provides the right amount for up to 15 kg bodyweight. The 30 ml syringe is also much more ergonomic than larger syringes.</p>
-        <ul class="cp-syringes" aria-label="Carton contents">
-          <li class="cp-syringes__row"><svg viewBox="0 0 230 34" aria-hidden="true"><use href="#cpSyringe"/></svg><span>30 ml · up to 15 kg</span></li>
-          <li class="cp-syringes__row"><svg viewBox="0 0 230 34" aria-hidden="true"><use href="#cpSyringe"/></svg><span>30 ml · up to 15 kg</span></li>
-        </ul>
       </article>
 
       <article class="cp-card cp-card--marine reveal">
@@ -272,12 +214,7 @@
       <article class="cp-card cp-card--species reveal d1">
         <span class="cp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#cpPaw"/></svg></span>
         <h3>Multi-species</h3>
-        <p>Suitable for dogs, cats and exotic pets.</p>
-        <ul class="cp-species">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#cpPaw"/></svg>Dogs</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#cpPaw"/></svg>Cats</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#cpPaw"/></svg>Exotic pets</li>
-        </ul>
+        <p>Suitable for dogs and cats.</p>
       </article>
     </div>
 
@@ -305,37 +242,8 @@
     </div>
 
     <div class="cp-how">
-      <div class="cp-admin reveal">
-        <p class="micro-label">Administration</p>
-        <p class="cp-admin__dose">2<small>ml/kg</small></p>
-        <p class="cp-admin__route">bodyweight, orally</p>
-
-        <ul class="cp-admin__list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span>Can be repeated every <b>4–6 hours</b> if clinically required.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#cpPaw"/></svg>
-            <span>For example, a 15 kg dog requires 30 ml of CharcoPet.
-              <span class="cp-eq"><b>15 kg</b><span>×</span><b>2 ml/kg</b><span>=</span><b>30 ml</b></span>
-              <b>One complete CharcoPet syringe provides that recommended dose.</b>
-            </span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
-            <span>Each carton contains two 30 ml syringes, enough for two such single-dose administrations when clinically indicated.</span>
-          </li>
-        </ul>
-
-        <div class="cp-indication">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-          <p><small>CharcoPet is recommended in cases of</small><b>Suspected or confirmed poison, toxin or medication ingestion</b></p>
-        </div>
-      </div>
-
       <!-- Interactive dose guide (2 ml/kg) -->
-      <div class="cp-dose reveal d1" id="cpDose">
+      <div class="cp-dose reveal" id="cpDose">
         <div class="cp-dose__head">
           <h3>Dose guide</h3>
           <span class="cp-dose__rate">2 ml/kg bodyweight</span>
@@ -362,37 +270,41 @@
         </div>
         <p class="cp-dose__note" id="cpDoseNote">For guidance only, calculated at 2 ml/kg bodyweight. Dosing and any repeat administration should always be decided by the veterinary surgeon.</p>
       </div>
-    </div>
 
-    <!-- How-to-administer video (placeholder until the film is supplied) -->
-    <figure class="cp-video cp-video--howto reveal">
-      <button class="cp-video__frame" type="button" data-video="" data-video-title="How to administer CharcoPet">
-        <span class="cp-video__bg" aria-hidden="true"></span>
-        <svg class="cp-video__art cp-video__art--line" viewBox="0 0 230 34" aria-hidden="true"><use href="#cpSyringe"/></svg>
-        <span class="cp-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.8v16.4a.8.8 0 0 0 1.2.7l13.4-8.2a.8.8 0 0 0 0-1.4L7.2 3.1A.8.8 0 0 0 6 3.8Z" fill="currentColor"/></svg></span>
-        <span class="cp-video__meta">
-          <span class="micro-label">How-to video</span>
-          <span class="cp-video__title">How to administer <b>CharcoPet</b></span>
-        </span>
-        <span class="cp-video__soon">Video coming soon</span>
-      </button>
-    </figure>
+      <!-- How-to-administer video (placeholder until the film is supplied) -->
+      <figure class="cp-video cp-video--howto reveal d1">
+        <button class="cp-video__frame" type="button" data-video="" data-video-title="How to administer CharcoPet">
+          <span class="cp-video__bg" aria-hidden="true"></span>
+          <svg class="cp-video__art cp-video__art--line" viewBox="0 0 230 34" aria-hidden="true"><use href="#cpSyringe"/></svg>
+          <span class="cp-video__soon">Video coming soon</span>
+          <span class="cp-video__meta">
+            <span class="cp-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.8v16.4a.8.8 0 0 0 1.2.7l13.4-8.2a.8.8 0 0 0 0-1.4L7.2 3.1A.8.8 0 0 0 6 3.8Z" fill="currentColor"/></svg></span>
+            <span class="cp-video__text">
+              <span class="micro-label">How-to video</span>
+              <span class="cp-video__title">How to administer <b>CharcoPet</b></span>
+            </span>
+          </span>
+        </button>
+      </figure>
+    </div>
   </div>
 </section>
 
 <!-- ===================== FAQ ===================== -->
 <section class="section section-tint cp-anchor" id="faq" aria-labelledby="faq-title">
-  <div class="wrap cp-faq">
-    <div class="cp-faq__intro">
-      <p class="eyebrow reveal">FAQ</p>
-      <h2 class="reveal" id="faq-title">CharcoPet <em>FAQs</em></h2>
-      <p class="lead reveal d1">Dosing, repeat doses, contraindications and administration.</p>
-      <a class="text-link reveal d2" href="#get-in-touch">Still have a question? Get in touch
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">FAQ</p>
+        <h2 class="reveal" id="faq-title">CharcoPet <em>FAQs</em></h2>
+        <p class="lead reveal d1">Dosing, repeat doses, contraindications and administration.</p>
+      </div>
+      <a class="text-link reveal" href="#get-in-touch">Still have a question? Get in touch
         <svg width="15" height="15" aria-hidden="true"><use href="#cpArrow"/></svg>
       </a>
     </div>
 
-    <div>
+    <div class="cp-faq">
       <div class="cp-faq__list">
         <details class="cp-faq__item" name="cp-faq" open>
           <summary><span class="cp-faq__n" aria-hidden="true">01</span><span>What is the dose of CharcoPet?</span><span class="cp-faq__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
