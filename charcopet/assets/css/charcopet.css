@@ -379,22 +379,19 @@ footer.site-footer{background:var(--forte-black);color:rgba(255,255,255,.78);fon
 .cp-card h3{font-size:19px;font-weight:700;letter-spacing:0;color:var(--ink);margin-bottom:10px}
 .cp-card p{font-size:15px;color:#5c5b60;line-height:1.6;max-width:52ch}
 .cp-card p em{font-style:italic}
-.cp-card__icon{
-  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;margin-bottom:20px;
-  color:var(--forte-blue-ink);background:rgba(0,171,230,.09);
-}
-.cp-card__icon svg{width:22px;height:22px}
-.cp-card--conc{grid-column:span 7;display:grid;grid-template-columns:auto 1fr;gap:10px 36px;align-items:center}
+.cp-card__art{display:block;height:auto;max-width:100%;margin-bottom:24px}
+.cp-card--conc .cp-card__art{width:380px}
+.cp-card--pack .cp-card__art{width:280px}
+.cp-card--marine .cp-card__art,.cp-card--species .cp-card__art{width:auto;height:128px}
+.cp-card--conc{grid-column:span 7}
 .cp-card--pack{grid-column:span 5}
 .cp-card--marine{grid-column:span 7}
 .cp-card--species{grid-column:span 5}
-
-.cp-card .cp-bignum{
-  max-width:none;font-weight:300;line-height:.86;letter-spacing:-.04em;font-size:clamp(84px,9.6vw,138px);
-  background:var(--cp-grad-taupe);-webkit-background-clip:text;background-clip:text;color:transparent;
-  padding-right:.04em;
+@media (min-width:1081px){
+  .cp-card--marine,.cp-card--species{display:grid;grid-template-columns:auto 1fr;gap:0 32px;align-items:center}
+  .cp-card--marine .cp-card__art,.cp-card--species .cp-card__art{margin-bottom:0}
 }
-.cp-card .cp-bignum small{font-size:.44em;font-weight:800;letter-spacing:0;margin-left:.04em}
+
 .cp-card--species::after{
   content:"";position:absolute;right:-60px;bottom:-90px;width:300px;height:300px;border-radius:50%;
   background:radial-gradient(circle,rgba(0,171,230,.10),transparent 68%);pointer-events:none;
@@ -546,7 +543,6 @@ footer.site-footer{background:var(--forte-black);color:rgba(255,255,255,.78);fon
 @media (max-width:1080px){
   .footer-top{grid-template-columns:1fr 1fr}
   .cp-card--conc,.cp-card--pack,.cp-card--marine,.cp-card--species{grid-column:span 6}
-  .cp-card--conc{grid-template-columns:1fr}
   .cp-how{grid-template-columns:1fr}
   .cp-how .cp-video__frame{min-height:0;aspect-ratio:16/9}
 }
