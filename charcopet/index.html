@@ -24,10 +24,10 @@
 
 <!--
   INTEGRATION NOTES
-  · Hero banner: assets/img/hero-banner.webp is TEMPORARY (the first supplied
-    banner with its lettering removed). Replace the file with the final banner;
-    if its proportions or composition differ, adjust the three --cp-hero-*
-    settings at the top of the hero block in charcopet.css.
+  · Hero banner: assets/img/hero-banner.webp (2000 x 452). The text is live and
+    sits on its light left side; if a new banner has other proportions, update
+    the aspect-ratio of .cp-hero in charcopet.css and the width/height attributes
+    of the <img>.
   · Header/footer links point at the Forte concept site (absolute URLs) so this
     preview works on its own. Inside the site, swap them for relative paths.
   · Videos: put a YouTube/Vimeo embed URL or an .mp4 path into data-video="" on
@@ -96,10 +96,10 @@
 <main id="main">
 
 <!-- ===================== HERO =====================
-     One static banner across the whole first screen, with live text over it. -->
+     Static banner with live text over it. -->
 <section class="cp-hero" aria-labelledby="cp-hero-title">
   <div class="cp-hero__media">
-    <img src="assets/img/hero-banner.webp" width="2000" height="1050" alt="A curious cocker spaniel sniffing a bar of chocolate on the living-room floor, with the CharcoPet carton and two 30 ml syringes in the foreground" fetchpriority="high" decoding="async">
+    <img src="assets/img/hero-banner.webp" width="2000" height="452" alt="A curious cocker spaniel sniffing a bar of chocolate on the living-room floor" fetchpriority="high" decoding="async">
   </div>
   <div class="wrap cp-hero__in">
     <div class="cp-hero__copy">

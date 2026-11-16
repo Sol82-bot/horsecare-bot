@@ -216,59 +216,39 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 
 /* ========================= 2. CHARCOPET COMPONENTS ======================== */
 
-/* ---------- Hero: one banner across the first screen, live text over it ----------
-   Three settings describe the banner artwork. Re-tune them when the final
-   banner replaces the temporary one:
-     --cp-hero-ratio   width / height of the image file
-     --cp-hero-focus   the corner that stays in view when the image is cropped
-     --cp-hero-clear   share of the image height, measured from the bottom, that
-                       the text stays out of (the pack sits there)             */
+/* ---------- Hero: static banner with live text over it ----------
+   The banner (2000 x 452) is light on the left, where the text sits, and holds
+   the artwork on the right. On desktop it keeps its own proportions and the
+   section is exactly as tall as the banner (or taller, if the text needs it);
+   if the section grows the image is cropped from the left, never from the art.
+   On tablets and phones the text sits above the banner. */
 .cp-hero{
-  --cp-vh:100vh;
-  --cp-hero-ratio:1.905;
-  --cp-hero-focus:100% 100%;
-  --cp-hero-clear:.215;
-  /* the first screen, less the site header and the product bar (and their 1px rules) */
-  --cp-hero-h:calc(var(--cp-vh) - var(--header-h) - var(--cp-subnav-h) - 2px);
-  position:relative;isolation:isolate;overflow:hidden;
+  position:relative;isolation:isolate;overflow:hidden;overflow:clip;   /* clip (not hidden) so the section can still grow with its text */
   display:flex;flex-direction:column;
-  min-height:min(var(--cp-hero-h),calc(69vw + 440px));
-  background:var(--cp-taupe);color:#fff;
+  background:#faf9f8;                         /* = the flat left edge of the banner */
 }
-@supports (height:100svh){.cp-hero{--cp-vh:100svh}}
-/* narrow and portrait screens: text on the panel colour, banner underneath */
-.cp-hero__media{order:2;flex:none;aspect-ratio:1.5;max-height:max(240px,calc(var(--cp-hero-h) - 340px));overflow:hidden}
-.cp-hero__media img{width:100%;height:100%;object-fit:cover;object-position:var(--cp-hero-focus)}
-.cp-hero__in{order:1;flex:1 0 auto;display:flex;align-items:center;width:100%;padding-top:44px;padding-bottom:40px}
+.cp-hero__media{order:2;height:clamp(170px,50vw,300px);overflow:hidden}
+.cp-hero__media img{width:100%;height:100%;object-fit:cover;object-position:100% 50%}
+.cp-hero__in{order:1;width:100%;padding-top:40px;padding-bottom:30px}
 .cp-hero__copy{max-width:560px}
-.cp-hero h1{color:#fff;font-size:clamp(36px,4.6vw,58px);line-height:1.14;margin-bottom:16px}
-.cp-hero h1 em{background-image:linear-gradient(120deg,#9be3ff 0%,#44c8f5 55%,#22b8ec 100%)}
-.cp-hero .lead{color:rgba(255,255,255,.92);font-size:clamp(17.5px,1.5vw,20px);max-width:27em;margin-bottom:26px}
-.cp-keymsg{padding-left:16px;border-left:3px solid var(--forte-blue-light);font-size:17px;line-height:1.45;color:#fff}
+.cp-hero h1{font-size:clamp(36px,4.6vw,58px);line-height:1.14;margin-bottom:16px}
+.cp-hero .lead{font-size:clamp(17px,1.5vw,20px);max-width:27em;margin-bottom:22px}
+.cp-keymsg{padding-left:16px;border-left:3px solid var(--forte-blue);font-size:17px;line-height:1.45;color:var(--ink)}
 .cp-keymsg b{display:block;font-weight:800;letter-spacing:.01em}
 
-/* landscape screens: the banner fills the whole first screen */
-@media (min-width:981px) and (min-aspect-ratio:5/4){
-  .cp-hero{
-    --cp-hero-pad:clamp(20px,4vh,48px);
-    /* height of the text-free strip, whichever way the image is being scaled */
-    --cp-hero-clear-h:max(var(--cp-hero-h) * var(--cp-hero-clear),100vw / var(--cp-hero-ratio) * var(--cp-hero-clear));
-    /* width of the plain panel at text level in the temporary banner, and the column that fits on it */
-    --cp-hero-panel:min(100vw - var(--cp-hero-h) * .95,41vw + var(--cp-hero-h) * .17);
-    --cp-hero-copy:min(520px,var(--cp-hero-panel) - max(32px,(100vw - var(--max)) / 2 + 32px) - 40px);
-    flex-direction:row;align-items:center;min-height:max(var(--cp-hero-h),400px);
-  }
-  .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto;max-height:none}
-  .cp-hero__in{display:block;flex:1 1 auto;padding-top:var(--cp-hero-pad);padding-bottom:calc(var(--cp-hero-pad) + var(--cp-hero-clear-h))}
-  .cp-hero__copy{max-width:var(--cp-hero-copy)}
-  .cp-hero h1{font-size:clamp(34px,min(4.6vw,8.4vh,var(--cp-hero-copy) / 6.1),64px);margin-bottom:clamp(10px,2.2vh,20px)}
-  .cp-hero .lead{font-size:clamp(16.5px,min(1.5vw,2.7vh),21px);margin-bottom:clamp(14px,3.2vh,30px)}
-  .cp-keymsg{font-size:clamp(16px,2.2vh,18px)}
+@media (min-width:981px){
+  .cp-hero{flex-direction:row;align-items:center;aspect-ratio:2000/452}
+  .cp-hero__media{position:absolute;inset:0;z-index:-1;height:auto}
+  .cp-hero__in{padding-top:clamp(26px,3.2vw,48px);padding-bottom:clamp(26px,3.2vw,48px)}
+  .cp-hero__copy{max-width:min(520px,43vw)}
+  .cp-hero h1{font-size:clamp(34px,3.3vw,58px);margin-bottom:clamp(10px,1vw,16px)}
+  .cp-hero .lead{font-size:clamp(16px,1.2vw,20px);margin-bottom:clamp(14px,1.3vw,22px)}
+  .cp-keymsg{font-size:clamp(15.5px,1.15vw,17px)}
 }
 @media (prefers-reduced-motion:no-preference){
-  .cp-hero__media img{animation:cp-hero-settle 1.8s var(--ease) both;transform-origin:var(--cp-hero-focus)}
+  .cp-hero__media img{animation:cp-hero-settle 1.8s var(--ease) both;transform-origin:100% 50%}
 }
-@keyframes cp-hero-settle{from{transform:scale(1.045)}to{transform:none}}
+@keyframes cp-hero-settle{from{transform:scale(1.04)}to{transform:none}}
 
 /* ---------- Sticky in-page navigation ---------- */
 .cp-subnav{
