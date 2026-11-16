@@ -380,8 +380,8 @@ footer.site-footer{background:var(--forte-black);color:rgba(255,255,255,.78);fon
 .cp-card p{font-size:15px;color:#5c5b60;line-height:1.6;max-width:52ch}
 .cp-card p em{font-style:italic}
 .cp-card__art{display:block;height:auto;max-width:100%;margin-bottom:24px}
-.cp-card--conc .cp-card__art{width:380px}
-.cp-card--pack .cp-card__art{width:280px}
+.cp-card--conc .cp-card__art{width:290px}
+.cp-card--pack .cp-card__art{width:220px}
 .cp-card--marine .cp-card__art,.cp-card--species .cp-card__art{width:auto;height:128px}
 .cp-card--conc{grid-column:span 7}
 .cp-card--pack{grid-column:span 5}
