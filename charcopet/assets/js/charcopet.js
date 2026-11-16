@@ -120,7 +120,7 @@
     var barrelSvg =
       '<svg class="cp-barrel" viewBox="0 0 260 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
       '<rect x="2" y="14" width="18" height="8" rx="3"/><rect x="20" y="11" width="6" height="14" rx="2"/>' +
-      '<rect class="cp-barrel__gel" x="29" y="9.5" width="148" height="17" rx="2" fill="#262223" stroke="none"/>' +
+      '<rect class="cp-barrel__gel" x="29" y="9.5" width="148" height="17" rx="2" fill="#414042" stroke="none"/>' +
       '<rect x="26" y="7" width="154" height="22" rx="4"/>' +
       '<g stroke-width="1" opacity=".55">' + ticks + '</g>' +
       '<path d="M181 2v32" stroke-width="3"/><rect x="183" y="13" width="60" height="10" rx="2"/><path d="M245 7v22" stroke-width="3"/>' +
