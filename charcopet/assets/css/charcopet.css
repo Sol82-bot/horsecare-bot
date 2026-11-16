@@ -310,6 +310,13 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-feature h3{font-size:17px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--cp-taupe);line-height:1.3;margin-bottom:6px}
 .cp-feature p{font-size:15px;color:#5c5b60;line-height:1.55}
 
+/* ---------- Photos next to the product copy ---------- */
+.cp-photos{display:grid;grid-template-rows:1fr 1fr;gap:18px;min-height:440px;min-width:0}
+.cp-photo{position:relative;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-lift);background:var(--forte-grey)}
+.cp-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cp-photo--a img{object-position:50% 60%}
+.cp-photo--b img{object-position:50% 55%}
+
 /* ---------- Video cards (placeholders until the films are supplied) ---------- */
 .cp-video{display:flex;min-width:0}
 .cp-video__frame{
@@ -319,13 +326,6 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 }
 .cp-video__bg{position:absolute;inset:0;z-index:-1;transition:transform 1s var(--ease)}
 .cp-video__frame:hover .cp-video__bg{transform:scale(1.03)}
-.cp-video--product .cp-video__bg{
-  background:
-    linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(0,0,0,.3) 100%),
-    radial-gradient(70% 60% at 50% 40%,rgba(138,116,112,.6),transparent 72%),
-    repeating-linear-gradient(115deg,rgba(255,255,255,.03) 0 60px,transparent 60px 140px),
-    linear-gradient(120deg,#3a2f2d 0%,#54413f 60%,#6a5350 100%);
-}
 .cp-video--howto .cp-video__bg{
   background:
     linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(0,30,45,.34) 100%),
@@ -547,7 +547,8 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   nav.menu.open a{font-size:17px;padding:14px 4px;align-self:flex-start}
   nav.menu.open a::after{left:4px;right:4px;bottom:8px}
   .cp-what{grid-template-columns:1fr;gap:48px}
-  .cp-what .cp-video__frame{min-height:0;aspect-ratio:16/9}
+  .cp-photos{grid-template-rows:none;grid-template-columns:1fr 1fr;min-height:0}
+  .cp-photo{aspect-ratio:4/3}
   .nl-grid{grid-template-columns:1fr;gap:28px}
   .cp-subnav__brand,.cp-subnav__cta{display:none}
   .cp-subnav__links{margin-left:-12px;margin-right:-12px;flex:1}
@@ -562,9 +563,10 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .section-head{margin-bottom:36px}
   .footer-top{grid-template-columns:1fr;gap:36px}
   .cp-hero__in{padding-top:36px;padding-bottom:32px}
-  .cp-what .cp-video__frame,.cp-how .cp-video__frame{aspect-ratio:4/3}
+  .cp-how .cp-video__frame{aspect-ratio:4/3}
+  .cp-photos{grid-template-columns:1fr}
+  .cp-photo{aspect-ratio:16/10}
   .cp-video__play{width:54px;height:54px}
-  .cp-video__art{width:68%;top:38%}
   .cp-video__meta{gap:18px}
   .cp-card{padding:26px 22px 24px}
   .cp-dose{padding:28px 22px 26px}
