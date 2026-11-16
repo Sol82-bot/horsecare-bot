@@ -302,20 +302,18 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-anchor{scroll-margin-top:calc(var(--cp-subnav-h) - 1px)}
 
 /* ---------- What is CharcoPet ---------- */
-.cp-what{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:72px;align-items:stretch}
 .cp-what h2{margin-bottom:18px}
+.cp-what .lead{max-width:640px}
 .cp-features{margin-top:36px;border-top:1px solid rgba(65,64,66,.1)}
 .cp-feature{display:grid;grid-template-columns:54px 1fr;gap:6px 18px;padding:22px 0;border-bottom:1px solid rgba(65,64,66,.1)}
 .cp-feature__num{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--cp-taupe-light);padding-top:3px;font-variant-numeric:tabular-nums}
 .cp-feature h3{font-size:17px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--cp-taupe);line-height:1.3;margin-bottom:6px}
 .cp-feature p{font-size:15px;color:#5c5b60;line-height:1.55}
-
-/* ---------- Photos next to the product copy ---------- */
-.cp-photos{display:grid;grid-template-rows:1fr 1fr;gap:18px;min-height:440px;min-width:0}
-.cp-photo{position:relative;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-lift);background:var(--forte-grey)}
-.cp-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cp-photo--a img{object-position:50% 60%}
-.cp-photo--b img{object-position:50% 55%}
+@media (min-width:981px){
+  .cp-features{margin-top:48px;border-top:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 56px}
+  .cp-feature{display:block;padding:24px 0 8px;border-bottom:0;border-top:1px solid rgba(65,64,66,.14)}
+  .cp-feature__num{display:block;margin-bottom:14px;padding-top:0}
+}
 
 /* ---------- Video cards (placeholders until the films are supplied) ---------- */
 .cp-video{display:flex;min-width:0}
@@ -505,11 +503,10 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 /* ---------- Blog ---------- */
 .cp-blog{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
 .cp-blog .news-media{aspect-ratio:16/8.4}
-.cp-blog__ph{position:absolute;inset:0;display:grid;place-items:center;transition:transform .6s var(--ease)}
-.news-card:hover .cp-blog__ph{transform:scale(1.05)}
-.cp-blog__ph--a{background:radial-gradient(70% 90% at 80% 10%,rgba(255,255,255,.28),transparent 60%),var(--cp-grad-taupe)}
-.cp-blog__ph--b{background:radial-gradient(70% 90% at 80% 10%,rgba(255,255,255,.3),transparent 60%),var(--grad)}
-.cp-blog__ph span{font-weight:900;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(34px,5vw,64px);color:rgba(255,255,255,.2);user-select:none}
+.cp-blog__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.cp-blog__img--a{object-position:50% 60%}
+.cp-blog__img--b{object-position:50% 55%}
+.news-card:hover .cp-blog__img{transform:scale(1.05)}
 .cp-blog .news-body h3{font-size:21px}
 
 /* ---------- Scroll-driven polish (progressive enhancement) ---------- */
@@ -529,7 +526,6 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 
 /* ================================ RESPONSIVE ============================== */
 @media (max-width:1180px){
-  .cp-what{gap:48px}
 }
 @media (max-width:1080px){
   .footer-top{grid-template-columns:1fr 1fr}
@@ -546,9 +542,6 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   }
   nav.menu.open a{font-size:17px;padding:14px 4px;align-self:flex-start}
   nav.menu.open a::after{left:4px;right:4px;bottom:8px}
-  .cp-what{grid-template-columns:1fr;gap:48px}
-  .cp-photos{grid-template-rows:none;grid-template-columns:1fr 1fr;min-height:0}
-  .cp-photo{aspect-ratio:4/3}
   .nl-grid{grid-template-columns:1fr;gap:28px}
   .cp-subnav__brand,.cp-subnav__cta{display:none}
   .cp-subnav__links{margin-left:-12px;margin-right:-12px;flex:1}
@@ -564,8 +557,6 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .footer-top{grid-template-columns:1fr;gap:36px}
   .cp-hero__in{padding-top:36px;padding-bottom:32px}
   .cp-how .cp-video__frame{aspect-ratio:4/3}
-  .cp-photos{grid-template-columns:1fr}
-  .cp-photo{aspect-ratio:16/10}
   .cp-video__play{width:54px;height:54px}
   .cp-video__meta{gap:18px}
   .cp-card{padding:26px 22px 24px}
