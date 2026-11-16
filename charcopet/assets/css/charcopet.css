@@ -217,33 +217,41 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 /* ========================= 2. CHARCOPET COMPONENTS ======================== */
 
 /* ---------- Hero: static banner with live text over it ----------
-   The banner (2000 x 452) is light on the left, where the text sits, and holds
-   the artwork on the right. On desktop it keeps its own proportions and the
-   section is exactly as tall as the banner (or taller, if the text needs it);
-   if the section grows the image is cropped from the left, never from the art.
-   On tablets and phones the text sits above the banner. */
+   Set up like the hero on the Forte home page: the banner covers the section,
+   anchored right; the heading uses the home page type (Dax Light, clamp 36-58px).
+   The banner holds the carton in the middle, so on wide screens the text sits
+   above the carton, and below ~1400px (and on tablets and phones) the text sits
+   above the banner instead, which is then shown in full.
+   Banner geometry (px in the 2000 x 452 file): carton x 845-1253, y 285-437;
+   photo starts at x ~1316-1460. Used by the 1400px rules below.            */
 .cp-hero{
-  position:relative;isolation:isolate;overflow:hidden;overflow:clip;   /* clip (not hidden) so the section can still grow with its text */
+  position:relative;isolation:isolate;overflow:hidden;overflow:clip;
   display:flex;flex-direction:column;
   background:#faf9f8;                         /* = the flat left edge of the banner */
 }
-.cp-hero__media{order:2;height:clamp(170px,50vw,300px);overflow:hidden}
-.cp-hero__media img{width:100%;height:100%;object-fit:cover;object-position:100% 50%}
-.cp-hero__in{order:1;width:100%;padding-top:40px;padding-bottom:30px}
-.cp-hero__copy{max-width:560px}
-.cp-hero h1{font-size:clamp(36px,4.6vw,58px);line-height:1.14;margin-bottom:16px}
-.cp-hero .lead{font-size:clamp(17px,1.5vw,20px);max-width:27em;margin-bottom:22px}
+.cp-hero__in{order:1;width:100%;padding-top:52px;padding-bottom:40px}
+.cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin:0 0 24px;font-weight:300}   /* as .hero h1 on the home page */
+.cp-hero .lead{margin-bottom:24px}
 .cp-keymsg{padding-left:16px;border-left:3px solid var(--forte-blue);font-size:17px;line-height:1.45;color:var(--ink)}
 .cp-keymsg b{display:block;font-weight:800;letter-spacing:.01em}
+.cp-hero__media{order:2;aspect-ratio:2000/452;overflow:hidden}
+.cp-hero__media img{width:100%;height:100%;object-fit:cover;object-position:100% 50%}
 
-@media (min-width:981px){
-  .cp-hero{flex-direction:row;align-items:center;aspect-ratio:2000/452}
-  .cp-hero__media{position:absolute;inset:0;z-index:-1;height:auto}
-  .cp-hero__in{padding-top:clamp(26px,3.2vw,48px);padding-bottom:clamp(26px,3.2vw,48px)}
-  .cp-hero__copy{max-width:min(520px,43vw)}
-  .cp-hero h1{font-size:clamp(34px,3.3vw,58px);margin-bottom:clamp(10px,1vw,16px)}
-  .cp-hero .lead{font-size:clamp(16px,1.2vw,20px);margin-bottom:clamp(14px,1.3vw,22px)}
-  .cp-keymsg{font-size:clamp(15.5px,1.15vw,17px)}
+/* phones and small tablets: only the artwork (carton + photo), full width */
+@media (max-width:760px){
+  .cp-hero__media{aspect-ratio:1155/452}
+  .cp-hero__media img{width:173.16%;max-width:none;margin-left:-73.16%;object-fit:fill}
+}
+
+/* wide screens: the banner sits behind the text, 483px tall like the home hero */
+@media (min-width:1400px){
+  .cp-hero{min-height:483px;flex-direction:row;align-items:flex-start}
+  .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto}
+  .cp-hero__in{padding-top:40px;padding-bottom:40px}
+  .cp-hero__copy{max-width:none}
+  .cp-hero .lead{max-width:none;margin-bottom:12px;white-space:nowrap}
+  .cp-keymsg{white-space:nowrap}
+  .cp-keymsg b{display:inline}
 }
 @media (prefers-reduced-motion:no-preference){
   .cp-hero__media img{animation:cp-hero-settle 1.8s var(--ease) both;transform-origin:100% 50%}
