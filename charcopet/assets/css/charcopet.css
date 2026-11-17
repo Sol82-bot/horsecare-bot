@@ -218,54 +218,34 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 /* ========================= 2. CHARCOPET COMPONENTS ======================== */
 
 /* ---------- Hero: static banner with live text over it ----------
-   Set up like the hero on the Forte home page: the banner covers the section,
-   anchored right; the heading uses the home page type (Dax Light, clamp 36-58px).
-   The banner holds the carton in the middle, so on wide screens the text sits
-   above the carton, and below 1600px (and on tablets and phones) the text sits
-   above the banner instead, with its empty left side cropped off.
-   Banner geometry (px in the 2000 x 451 file): white left side to x ~730, then a
-   light curtain / plant fade; dog from x ~975-1070 to the nose at ~1500; chocolate
-   bar x ~1605-1790, y ~330-392 (must stay fully visible); carton x 595-995,
-   y 275-420 on a blue band that starts at y 346. Used by the rules below.   */
+   Set up like the hero on the Forte home page: the banner covers the section, anchored right; the
+   heading uses the home page type (Dax Light, clamp 36-58px). The text sits on the banner's light left
+   side from 1024px; on narrower screens it sits above the banner.
+   Banner geometry (px in the 2000 x 451 file; the file is shipped enlarged 2x, same proportions):
+   light grey-to-white left side to x ~860 with a faint Forte watermark; carton x 860-1230, y 276-415;
+   photo in a slanted frame, its left edge x ~1300-1560; chocolate bar x ~1680-1745, y ~330-355 (must
+   always stay whole); blue and brown shapes to the right edge. Used by the rules below.              */
 .cp-hero{
   position:relative;isolation:isolate;overflow:hidden;overflow:clip;
   display:flex;flex-direction:column;
-  background:#fff;                             /* = the flat left edge of the banner */
+  background:#fff;
 }
 .cp-hero__in{order:1;width:100%;padding-top:52px;padding-bottom:40px}
 .cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin:0 0 24px;font-weight:300}   /* as .hero h1 on the home page */
 .cp-hero .lead{margin-bottom:24px}
 .cp-keymsg{padding-left:16px;border-left:3px solid var(--forte-blue);font-size:17px;line-height:1.45;color:var(--ink)}
 .cp-keymsg b{display:block;font-weight:800;letter-spacing:.01em}
-/* Text above the banner (everything narrower than 1600px). The empty white left side of the banner is
-   cropped off - from x = 560 of 2000, just left of the carton - and the right side is untouched, so the
-   carton, the dog and the chocolate fill the strip edge to edge. */
-.cp-hero__media{order:2;aspect-ratio:1440/451;overflow:hidden}
-.cp-hero__media img{width:138.89%;max-width:none;height:100%;margin-left:-38.89%;object-fit:fill}
+/* Text above the banner (narrower than 1024px). The empty left side of the banner is cropped off - from
+   x = 800 of 2000, just left of the carton - and the right side is untouched, so the carton, the photo and
+   the chocolate fill the strip edge to edge. */
+.cp-hero__media{order:2;aspect-ratio:1200/451;overflow:hidden}
+.cp-hero__media img{width:166.67%;max-width:none;height:100%;margin-left:-66.67%;object-fit:fill}
 
-/* Laptops and tablets in landscape: a tighter text block (308px), and the banner height follows the window
-   so that the carton and the chocolate always fit on the first screen:
-     height = window - header (77px) - text (308px), kept between "whole banner" (22.55vw, nothing cropped)
-     and "left 560px cropped" (31.32vw). The banner stays anchored to the right, so only the white left
-     side is ever cropped. */
-@media (min-width:981px) and (max-width:1359px){
-  .cp-hero__in{padding-top:36px;padding-bottom:28px}
-  .cp-hero .lead{margin-bottom:16px}
-  .cp-keymsg b{display:inline}
-  .cp-hero__media{aspect-ratio:auto;height:clamp(22.55vw,calc(100vh - 385px),31.32vw)}
-  .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover;object-position:100% 50%}
-}
-@supports (height:100svh){
-  @media (min-width:981px) and (max-width:1359px){
-    .cp-hero__media{height:clamp(22.55vw,calc(100svh - 385px),31.32vw)}
-  }
-}
-
-/* Text over the banner (1360px and wider). The banner is anchored to its right edge and only its empty white
-   left side is cropped, so the dog and the chocolate bar (right end at x ~1790 of 2000) are always whole.
-   --cp-h is the hero height: 460px on laptops (the text clears the dog and the carton down to 1360px),
+/* Text over the banner (1024px and wider). The banner is anchored to its right edge and only its empty
+   left side is cropped, so the photo and the chocolate bar (right end at x ~1745 of 2000) are always whole.
+   --cp-h is the hero height: 460px on laptops (the text clears the photo and the carton down to 1024px),
    483px like the home hero from 1600px, and taller only on ultra-wide screens (no top/bottom cropping). */
-@media (min-width:1360px){
+@media (min-width:1024px){
   .cp-hero{--cp-h:460px;min-height:var(--cp-h);flex-direction:row;align-items:flex-start}
   .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto;height:auto}
   .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover;
