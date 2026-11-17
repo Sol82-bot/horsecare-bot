@@ -222,7 +222,7 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
    anchored right; the heading uses the home page type (Dax Light, clamp 36-58px).
    The banner holds the carton in the middle, so on wide screens the text sits
    above the carton, and below 1600px (and on tablets and phones) the text sits
-   above the banner instead, which is then shown in full.
+   above the banner instead, with its empty left side cropped off.
    Banner geometry (px in the 2000 x 451 file): white left side to x ~730, then a
    light curtain / plant fade; dog from x ~975-1070 to the nose at ~1500; chocolate
    bar x ~1605-1790, y ~330-392 (must stay fully visible); carton x 595-995,
@@ -237,19 +237,35 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-hero .lead{margin-bottom:24px}
 .cp-keymsg{padding-left:16px;border-left:3px solid var(--forte-blue);font-size:17px;line-height:1.45;color:var(--ink)}
 .cp-keymsg b{display:block;font-weight:800;letter-spacing:.01em}
-.cp-hero__media{order:2;aspect-ratio:2000/451;overflow:hidden}
-.cp-hero__media img{width:100%;height:100%;object-fit:cover;object-position:100% 50%}
+/* Text above the banner (everything narrower than 1600px). The empty white left side of the banner is
+   cropped off - from x = 560 of 2000, just left of the carton - and the right side is untouched, so the
+   carton, the dog and the chocolate fill the strip edge to edge. */
+.cp-hero__media{order:2;aspect-ratio:1440/451;overflow:hidden}
+.cp-hero__media img{width:138.89%;max-width:none;height:100%;margin-left:-38.89%;object-fit:fill}
 
-/* phones and small tablets: only the artwork (carton + photo), full width */
-@media (max-width:760px){
-  .cp-hero__media{aspect-ratio:1420/451}
-  .cp-hero__media img{width:140.85%;max-width:none;margin-left:-40.85%;object-fit:fill}
+/* Laptops and tablets in landscape: a tighter text block (308px), and the banner height follows the window
+   so that the carton and the chocolate always fit on the first screen:
+     height = window - header (77px) - text (308px), kept between "whole banner" (22.55vw, nothing cropped)
+     and "left 560px cropped" (31.32vw). The banner stays anchored to the right, so only the white left
+     side is ever cropped. */
+@media (min-width:981px) and (max-width:1599px){
+  .cp-hero__in{padding-top:36px;padding-bottom:28px}
+  .cp-hero .lead{margin-bottom:16px}
+  .cp-keymsg b{display:inline}
+  .cp-hero__media{aspect-ratio:auto;height:clamp(22.55vw,calc(100vh - 385px),31.32vw)}
+  .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover;object-position:100% 50%}
+}
+@supports (height:100svh){
+  @media (min-width:981px) and (max-width:1599px){
+    .cp-hero__media{height:clamp(22.55vw,calc(100svh - 385px),31.32vw)}
+  }
 }
 
 /* wide screens: the banner sits behind the text, 483px tall like the home hero */
 @media (min-width:1600px){
   .cp-hero{min-height:max(483px,22.55vw);flex-direction:row;align-items:flex-start}   /* 483px like the home hero; taller only on ultra-wide screens, so the picture is never cropped top or bottom */
   .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto}
+  .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover}
   /* The chocolate bar (the point of the picture) must never be cut: it ends at x ~1790 of 2000, so the
      right edge of the banner stays in view and any cropping happens on the white left side only. */
   .cp-hero__media img{object-position:min(0px,calc(100vw - 1980px)) 50%}
