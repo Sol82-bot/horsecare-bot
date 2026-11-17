@@ -63,7 +63,6 @@
 <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
   <defs>
     <symbol id="cpArrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="cpSyringe" viewBox="0 0 230 34"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="13" width="18" height="8" rx="3"/><rect x="20" y="10" width="6" height="14" rx="2"/><rect x="26" y="6" width="128" height="22" rx="4"/><rect x="29" y="9" width="122" height="16" rx="2" fill="currentColor" stroke="none" opacity=".9"/><path d="M155 2v30" stroke-width="3"/><rect x="157" y="12" width="56" height="10" rx="2"/><path d="M215 6v22" stroke-width="3"/></g></symbol>
   </defs>
 </svg>
 
@@ -127,38 +126,45 @@
 </nav>
 
 <!-- ===================== WHAT IS CHARCOPET ===================== -->
-<section class="section cp-anchor" id="what-is-charcopet" aria-labelledby="what-title">
+<section class="section section--dark cp-anchor" id="what-is-charcopet" aria-labelledby="what-title">
   <div class="wrap">
     <div class="cp-what">
-      <div class="cp-what__head">
+      <div>
         <p class="eyebrow reveal">The product</p>
         <h2 class="reveal" id="what-title">What is <em>CharcoPet?</em></h2>
         <p class="lead reveal d1">CharcoPet combines a high activated charcoal concentration with a ready-to-use gel formulation and precision-dosed syringe.</p>
-      </div>
 
-      <ol class="cp-features">
-        <li class="cp-feature reveal d1">
-          <span class="cp-feature__num" aria-hidden="true">01</span>
-          <div>
+        <ul class="cp-features">
+          <li class="cp-feature reveal d1">
             <h3>50% activated charcoal</h3>
             <p>A concentrated formulation designed to deliver a high charcoal content per ml.</p>
-          </div>
-        </li>
-        <li class="cp-feature reveal d2">
-          <span class="cp-feature__num" aria-hidden="true">02</span>
-          <div>
+          </li>
+          <li class="cp-feature reveal d2">
             <h3>Ready-to-use 30 ml syringe</h3>
             <p>A graduated dial-dose syringe for measured oral administration.</p>
-          </div>
-        </li>
-        <li class="cp-feature reveal d3">
-          <span class="cp-feature__num" aria-hidden="true">03</span>
-          <div>
+          </li>
+          <li class="cp-feature reveal d3">
             <h3>Two syringes per carton</h3>
             <p>Each CharcoPet carton contains two 30 ml syringes, providing 60 ml in total.</p>
-          </div>
-        </li>
-      </ol>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Product video (placeholder until the film is supplied) -->
+      <figure class="cp-video cp-video--product reveal d2">
+        <button class="cp-video__frame" type="button" data-video="" data-video-title="What is CharcoPet? Key benefits">
+          <span class="cp-video__bg" aria-hidden="true"></span>
+          <img class="cp-video__art" src="assets/img/charcopet-pack.webp" width="1188" height="448" alt="" loading="lazy" decoding="async">
+          <span class="cp-video__soon">Video coming soon</span>
+          <span class="cp-video__meta">
+            <span class="cp-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.8v16.4a.8.8 0 0 0 1.2.7l13.4-8.2a.8.8 0 0 0 0-1.4L7.2 3.1A.8.8 0 0 0 6 3.8Z" fill="currentColor"/></svg></span>
+            <span class="cp-video__text">
+              <span class="micro-label">Product video</span>
+              <span class="cp-video__title">What is CharcoPet? <b>Key benefits</b></span>
+            </span>
+          </span>
+        </button>
+      </figure>
     </div>
   </div>
 </section>
@@ -173,33 +179,33 @@
       </div>
     </div>
 
-    <div class="cp-bento">
-      <article class="cp-card cp-card--conc reveal">
-        <img class="cp-card__art" src="assets/img/benefit-concentration.webp" width="580" height="161" alt="" loading="lazy" decoding="async">
+    <div class="cp-benefits">
+      <article class="cp-benefit reveal" style="--unit:var(--cp-taupe);--unit-ink:var(--cp-taupe)">
+        <div class="cp-benefit__art"><img src="assets/img/benefit-concentration.webp" width="580" height="161" alt="" loading="lazy" decoding="async"></div>
         <h3>High concentration</h3>
+        <p class="cp-benefit__area">50% activated charcoal</p>
         <p>With 50% activated charcoal, CharcoPet delivers a high charcoal concentration per ml, minimising the volume of administration and reducing handling stress.</p>
       </article>
 
-      <article class="cp-card cp-card--pack reveal d1">
-        <img class="cp-card__art" src="assets/img/benefit-pack.webp" width="440" height="169" alt="" loading="lazy" decoding="async">
+      <article class="cp-benefit reveal d1" style="--unit:var(--forte-blue);--unit-ink:var(--forte-blue-ink)">
+        <div class="cp-benefit__art"><img src="assets/img/benefit-pack.webp" width="440" height="169" alt="" loading="lazy" decoding="async"></div>
         <h3>2 × 30 ml syringe pack</h3>
+        <p class="cp-benefit__area">Up to 15 kg per syringe</p>
         <p>Each syringe provides the right amount for up to 15 kg bodyweight. The 30 ml syringe is also much more ergonomic than larger syringes.</p>
       </article>
 
-      <article class="cp-card cp-card--marine reveal">
-        <img class="cp-card__art" src="assets/img/benefit-marine.webp" width="220" height="256" alt="" loading="lazy" decoding="async">
-        <div>
-          <h3>Marine bioactive support</h3>
-          <p>Seaweed meal (<em>Ascophyllum</em>, <em>Gracilaria</em>, <em>Ulva</em> spp.) provides natural polysaccharides that help soothe the gut lining and support recovery.<sup>1–3</sup></p>
-        </div>
+      <article class="cp-benefit reveal d2" style="--unit:var(--cp-taupe);--unit-ink:var(--cp-taupe)">
+        <div class="cp-benefit__art"><img src="assets/img/benefit-marine.webp" width="220" height="256" alt="" loading="lazy" decoding="async"></div>
+        <h3>Marine bioactive support</h3>
+        <p class="cp-benefit__area">Seaweed meal</p>
+        <p>Seaweed meal (<em>Ascophyllum</em>, <em>Gracilaria</em>, <em>Ulva</em> spp.) provides natural polysaccharides that help soothe the gut lining and support recovery.<sup>1–3</sup></p>
       </article>
 
-      <article class="cp-card cp-card--species reveal d1">
-        <img class="cp-card__art" src="assets/img/benefit-species.webp" width="255" height="256" alt="" loading="lazy" decoding="async">
-        <div>
-          <h3>Multi-species</h3>
-          <p>Suitable for dogs and cats.</p>
-        </div>
+      <article class="cp-benefit reveal d3" style="--unit:var(--forte-blue);--unit-ink:var(--forte-blue-ink)">
+        <div class="cp-benefit__art"><img src="assets/img/benefit-species.webp" width="255" height="256" alt="" loading="lazy" decoding="async"></div>
+        <h3>Multi-species</h3>
+        <p class="cp-benefit__area">Dogs &amp; cats</p>
+        <p>Suitable for dogs and cats.</p>
       </article>
     </div>
 
@@ -217,7 +223,7 @@
 </section>
 
 <!-- ===================== HOW TO USE ===================== -->
-<section class="section cp-anchor" id="how-to-use" aria-labelledby="how-title">
+<section class="section section--dark section--graphite cp-anchor" id="how-to-use" aria-labelledby="how-title">
   <div class="wrap">
     <div class="section-head">
       <div>
@@ -226,9 +232,9 @@
       </div>
     </div>
 
-    <div class="cp-how">
-      <!-- Interactive dose guide (2 ml/kg) -->
-      <div class="cp-dose reveal" id="cpDose">
+    <!-- Interactive dose guide (2 ml/kg) -->
+    <div class="cp-dose reveal" id="cpDose">
+      <div class="cp-dose__panel cp-dose__panel--in">
         <div class="cp-dose__head">
           <h3>Dose guide</h3>
           <span class="cp-dose__rate">2 ml/kg bodyweight</span>
@@ -247,36 +253,24 @@
           <button type="button" data-kg="30">30 kg</button>
           <button type="button" data-kg="45">45 kg</button>
         </div>
+      </div>
 
+      <div class="cp-dose__panel cp-dose__panel--out">
+        <p class="cp-dose__label cp-dose__label--out">Volume per dose</p>
         <div class="cp-result" aria-live="polite">
           <p class="cp-result__ml"><span id="cpMl">30</span><small>ml</small></p>
           <p class="cp-result__text"><b id="cpSyringeText">1 full syringe</b><span id="cpCartonText">1 carton covers this dose, with one syringe to spare.</span></p>
           <div class="cp-barrels" id="cpBarrels" aria-hidden="true"></div>
         </div>
-        <p class="cp-dose__note" id="cpDoseNote">For guidance only, calculated at 2 ml/kg bodyweight. Dosing and any repeat administration should always be decided by the veterinary surgeon.</p>
       </div>
 
-      <!-- How-to-administer video (placeholder until the film is supplied) -->
-      <figure class="cp-video cp-video--howto reveal d1">
-        <button class="cp-video__frame" type="button" data-video="" data-video-title="How to administer CharcoPet">
-          <span class="cp-video__bg" aria-hidden="true"></span>
-          <svg class="cp-video__art cp-video__art--line" viewBox="0 0 230 34" aria-hidden="true"><use href="#cpSyringe"/></svg>
-          <span class="cp-video__soon">Video coming soon</span>
-          <span class="cp-video__meta">
-            <span class="cp-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.8v16.4a.8.8 0 0 0 1.2.7l13.4-8.2a.8.8 0 0 0 0-1.4L7.2 3.1A.8.8 0 0 0 6 3.8Z" fill="currentColor"/></svg></span>
-            <span class="cp-video__text">
-              <span class="micro-label">How-to video</span>
-              <span class="cp-video__title">How to administer <b>CharcoPet</b></span>
-            </span>
-          </span>
-        </button>
-      </figure>
+      <p class="cp-dose__note" id="cpDoseNote">For guidance only, calculated at 2 ml/kg bodyweight. Dosing and any repeat administration should always be decided by the veterinary surgeon.</p>
     </div>
   </div>
 </section>
 
 <!-- ===================== FAQ ===================== -->
-<section class="section section-tint cp-anchor" id="faq" aria-labelledby="faq-title">
+<section class="section cp-anchor" id="faq" aria-labelledby="faq-title">
   <div class="wrap">
     <div class="section-head">
       <div>
@@ -355,7 +349,7 @@
 </section>
 
 <!-- ===================== BLOG ===================== -->
-<section class="section cp-anchor" id="blog" aria-labelledby="blog-title">
+<section class="section section-tint cp-anchor" id="blog" aria-labelledby="blog-title">
   <div class="wrap">
     <div class="section-head">
       <div>

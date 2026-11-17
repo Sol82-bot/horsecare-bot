@@ -156,6 +156,29 @@ nav.menu a.active{color:var(--forte-blue-deep)}
 /* ---------- Sections ---------- */
 .section{padding:120px 0}
 .section-tint{background:var(--forte-grey-tint)}
+
+/* Dark sections: give the page rhythm and a clear break from the light hero.
+   --dark is the CharcoPet taupe, --graphite adds the Forte graphite (#414042). */
+.section--dark{
+  position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(60% 90% at 88% 0%,rgba(255,255,255,.09),transparent 62%),
+    linear-gradient(120deg,#7d6561 0%,#6a5350 48%,#54413f 100%);
+}
+.section--dark::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(115deg,rgba(255,255,255,.04) 0 60px,transparent 60px 140px);
+}
+.section--dark>.wrap{position:relative}
+.section--graphite{
+  background:
+    radial-gradient(60% 90% at 12% 0%,rgba(0,171,230,.14),transparent 62%),
+    linear-gradient(120deg,#4d4c4f 0%,#414042 50%,#353437 100%);
+}
+.section--dark .eyebrow{color:var(--forte-blue-light)}
+.section--dark h2{color:#fff}
+.section--dark h2 em{background-image:linear-gradient(120deg,#a8e7ff 0%,#5fd0f8 55%,#2bbcf0 100%)}
+.section--dark .lead{color:rgba(255,255,255,.88)}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:52px;flex-wrap:wrap}
 .section-head .lead{margin-top:14px}
 
@@ -302,29 +325,23 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-anchor{scroll-margin-top:calc(var(--cp-subnav-h) - 1px)}
 
 /* ---------- What is CharcoPet ---------- */
+.cp-what{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:72px;align-items:stretch}
 .cp-what h2{margin-bottom:18px}
-.cp-what .lead{max-width:640px}
-.cp-features{margin-top:36px;border-top:1px solid rgba(65,64,66,.1)}
-.cp-feature{display:grid;grid-template-columns:54px 1fr;gap:6px 18px;padding:22px 0;border-bottom:1px solid rgba(65,64,66,.1)}
-.cp-feature__num{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--cp-taupe-light);padding-top:3px;font-variant-numeric:tabular-nums}
-.cp-feature h3{font-size:17px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--cp-taupe);line-height:1.3;margin-bottom:6px}
-.cp-feature p{font-size:15px;color:#5c5b60;line-height:1.55}
-@media (min-width:981px){
-  .cp-features{margin-top:48px;border-top:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 56px}
-  .cp-feature{display:block;padding:24px 0 8px;border-bottom:0;border-top:1px solid rgba(65,64,66,.14)}
-  .cp-feature__num{display:block;margin-bottom:14px;padding-top:0}
-}
+.cp-features{margin-top:36px;border-top:1px solid rgba(255,255,255,.2)}
+.cp-feature{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.cp-feature h3{font-size:17px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#fff;line-height:1.3;margin-bottom:6px}
+.cp-feature p{font-size:15px;color:rgba(255,255,255,.82);line-height:1.55}
 
 /* ---------- Video cards (placeholders until the films are supplied) ---------- */
 .cp-video{display:flex;min-width:0}
 .cp-video__frame{
   position:relative;flex:1;display:block;width:100%;min-height:400px;border:0;border-radius:8px;overflow:hidden;cursor:pointer;
   background:var(--forte-black);color:#fff;text-align:left;isolation:isolate;
-  box-shadow:var(--shadow-lift);
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
 }
 .cp-video__bg{position:absolute;inset:0;z-index:-1;transition:transform 1s var(--ease)}
 .cp-video__frame:hover .cp-video__bg{transform:scale(1.03)}
-.cp-video--howto .cp-video__bg{
+.cp-video--product .cp-video__bg{
   background:
     linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(0,30,45,.34) 100%),
     radial-gradient(70% 60% at 50% 40%,rgba(68,200,245,.5),transparent 72%),
@@ -335,7 +352,6 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   position:absolute;left:50%;top:41%;width:84%;height:auto;max-width:none;transform:translate(-50%,-50%);z-index:-1;
   filter:drop-shadow(0 24px 30px rgba(0,0,0,.35));
 }
-.cp-video__art--line{width:70%;opacity:.55;filter:none;color:#fff}
 .cp-video__meta{
   position:absolute;left:clamp(20px,2.6vw,34px);right:clamp(20px,2.6vw,34px);bottom:clamp(20px,2.4vw,30px);
   display:flex;align-items:center;gap:22px;
@@ -373,36 +389,22 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   background:rgba(255,255,255,.92);color:var(--ink);font-size:22px;line-height:1;
 }
 
-/* ---------- Benefits (bento) ---------- */
-.cp-bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-.cp-card{
-  position:relative;background:#fff;border:1px solid rgba(65,64,66,.08);border-radius:8px;padding:34px 34px 32px;overflow:hidden;
+/* ---------- Benefits: four cards in one row (as the four businesses on the home page) ---------- */
+.cp-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cp-benefit{
+  position:relative;background:#fff;border:1px solid rgba(65,64,66,.08);border-radius:8px;
+  padding:32px 26px 28px;overflow:hidden;display:flex;flex-direction:column;
   transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;
 }
-.cp-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft);border-color:transparent}
-.cp-card h3{font-size:19px;font-weight:700;letter-spacing:0;color:var(--ink);margin-bottom:10px}
-.cp-card p{font-size:15px;color:#5c5b60;line-height:1.6;max-width:52ch}
-.cp-card p em{font-style:italic}
-.cp-card__art{display:block;height:auto;max-width:100%;margin-bottom:24px}
-.cp-card--conc .cp-card__art{width:290px}
-.cp-card--pack .cp-card__art{width:220px}
-.cp-card--marine .cp-card__art,.cp-card--species .cp-card__art{width:auto;height:128px}
-.cp-card--conc{grid-column:span 7}
-.cp-card--pack{grid-column:span 5}
-.cp-card--marine{grid-column:span 7}
-.cp-card--species{grid-column:span 5}
-@media (min-width:1081px){
-  .cp-card--marine,.cp-card--species{display:grid;grid-template-columns:auto 1fr;gap:0 32px;align-items:center}
-  .cp-card--marine .cp-card__art,.cp-card--species .cp-card__art{margin-bottom:0}
-}
-
-.cp-card--species::after{
-  content:"";position:absolute;right:-60px;bottom:-90px;width:300px;height:300px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,171,230,.10),transparent 68%);pointer-events:none;
-}
-.cp-card--marine::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--grad);opacity:.85;
-}
+.cp-benefit::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--unit,var(--forte-blue))}
+.cp-benefit:hover{transform:translateY(-8px);box-shadow:var(--shadow-lift);border-color:transparent}
+.cp-benefit__art{height:96px;margin-bottom:22px;display:flex;align-items:center}
+.cp-benefit__art img{max-width:100%;max-height:100%;width:auto;height:auto;object-position:left center}
+.cp-benefit h3{font-size:18px;font-weight:700;letter-spacing:0;color:var(--ink);margin-bottom:4px;line-height:1.3}
+@media (min-width:1081px) and (max-width:1279px){.cp-benefit h3{min-height:2.6em}}   /* keeps the labels level when a title wraps */
+.cp-benefit__area{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--unit-ink,var(--forte-blue-ink));font-weight:800;margin-bottom:14px}
+.cp-benefit p:not(.cp-benefit__area){font-size:14px;color:#6a6970;line-height:1.6}
+.cp-benefit em{font-style:italic}
 
 /* ---------- References ---------- */
 .cp-refs{margin-top:28px;border-top:1px solid rgba(65,64,66,.1)}
@@ -417,20 +419,17 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-refs li{margin-bottom:8px;padding-left:4px}
 .cp-refs li em{font-style:italic}
 
-/* ---------- How to use ---------- */
-.cp-how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:22px;align-items:stretch}
-/* the dose guide comes first in the markup (and on phones); on desktop it sits on the right */
-@media (min-width:1081px){
-  .cp-how .cp-video{grid-column:1;grid-row:1}
-  .cp-how .cp-dose{grid-column:2;grid-row:1}
-}
-
+/* ---------- How to use: the dose guide on its own ---------- */
 /* Dose guide */
 .cp-dose{
   --ink:var(--forte-black);               /* graphite #414042 throughout the dose guide */
-  border:1px solid rgba(65,64,66,.1);border-radius:8px;padding:40px 40px 34px;background:#fff;
-  box-shadow:var(--shadow-soft);display:flex;flex-direction:column;
+  border-radius:8px;background:#fff;overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
 }
+.cp-dose__panel{padding:44px 46px 40px;min-width:0}
+.cp-dose__panel--out{background:var(--cp-taupe-tint);display:flex;flex-direction:column;justify-content:center}
+.cp-dose__label--out{margin-bottom:14px}
 .cp-dose__head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:6px}
 .cp-dose h3{font-size:22px;font-weight:700;letter-spacing:0;color:var(--ink)}
 .cp-dose__rate{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cp-taupe);background:var(--cp-taupe-tint);padding:6px 12px;border-radius:999px;white-space:nowrap}
@@ -463,8 +462,8 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-presets button:hover{border-color:var(--forte-blue);color:var(--forte-blue-ink)}
 .cp-presets button[aria-pressed="true"]{background:var(--forte-blue);border-color:var(--forte-blue);color:#fff}
 
-.cp-result{margin-top:26px;padding-top:24px;border-top:1px solid rgba(65,64,66,.1);display:grid;grid-template-columns:auto 1fr;gap:6px 28px;align-items:center}
-.cp-result__ml{font-weight:700;font-size:clamp(46px,4.6vw,62px);line-height:.95;letter-spacing:-.02em;color:var(--forte-black);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cp-result{display:grid;grid-template-columns:auto 1fr;gap:6px 28px;align-items:center}
+.cp-result__ml{font-weight:700;font-size:clamp(52px,5.4vw,76px);line-height:.95;letter-spacing:-.02em;color:var(--forte-black);font-variant-numeric:tabular-nums;white-space:nowrap}
 .cp-result__ml small{font:inherit;letter-spacing:inherit;color:inherit;margin-left:.2em}
 .cp-result__text{font-size:15px;line-height:1.5;color:#5c5b60}
 .cp-result__text b{display:block;font-size:17px;font-weight:700;color:var(--ink)}
@@ -472,7 +471,7 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-barrel{display:block;width:100%;height:auto;color:var(--cp-taupe);transition:opacity .35s var(--ease)}
 .cp-barrel.is-empty{opacity:.28}
 .cp-barrel__gel{transform-box:fill-box;transform-origin:left center;transform:scaleX(var(--f,0));transition:transform .5s var(--ease)}
-.cp-dose__note{margin-top:22px;font-size:12.5px;line-height:1.55;color:#77767c}
+.cp-dose__note{grid-column:1/-1;padding:18px 46px;border-top:1px solid rgba(65,64,66,.1);font-size:12.5px;line-height:1.55;color:#77767c}
 
 /* ---------- FAQ ---------- */
 .cp-faq__list{border-top:1px solid rgba(65,64,66,.12)}
@@ -526,12 +525,11 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 
 /* ================================ RESPONSIVE ============================== */
 @media (max-width:1180px){
+  .cp-what{gap:48px}
 }
 @media (max-width:1080px){
   .footer-top{grid-template-columns:1fr 1fr}
-  .cp-card--conc,.cp-card--pack,.cp-card--marine,.cp-card--species{grid-column:span 6}
-  .cp-how{grid-template-columns:1fr}
-  .cp-how .cp-video__frame{min-height:0;aspect-ratio:16/9}
+  .cp-benefits{grid-template-columns:1fr 1fr}
 }
 @media (max-width:980px){
   nav.menu,.nav-right{display:none}
@@ -543,11 +541,15 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   nav.menu.open a{font-size:17px;padding:14px 4px;align-self:flex-start}
   nav.menu.open a::after{left:4px;right:4px;bottom:8px}
   .nl-grid{grid-template-columns:1fr;gap:28px}
+  .cp-what{grid-template-columns:1fr;gap:48px}
+  .cp-what .cp-video__frame{min-height:0;aspect-ratio:16/9}
+  .cp-dose{grid-template-columns:1fr}
+  .cp-dose__panel--out{border-top:1px solid rgba(65,64,66,.08)}
   .cp-subnav__brand,.cp-subnav__cta{display:none}
   .cp-subnav__links{margin-left:-12px;margin-right:-12px;flex:1}
 }
 @media (max-width:720px){
-  .cp-card--conc,.cp-card--pack,.cp-card--marine,.cp-card--species{grid-column:span 12}
+  .cp-benefits{grid-template-columns:1fr}
   .cp-blog{grid-template-columns:1fr}
 }
 @media (max-width:600px){
@@ -556,11 +558,13 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .section-head{margin-bottom:36px}
   .footer-top{grid-template-columns:1fr;gap:36px}
   .cp-hero__in{padding-top:36px;padding-bottom:32px}
-  .cp-how .cp-video__frame{aspect-ratio:4/3}
+  .cp-what .cp-video__frame{aspect-ratio:4/3}
+  .cp-video__art{width:68%;top:38%}
   .cp-video__play{width:54px;height:54px}
   .cp-video__meta{gap:18px}
-  .cp-card{padding:26px 22px 24px}
-  .cp-dose{padding:28px 22px 26px}
+  .cp-benefit{padding:28px 22px 24px}
+  .cp-dose__panel{padding:30px 22px 28px}
+  .cp-dose__note{padding:16px 22px}
   .cp-dose__head{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:12px}
   .cp-result{grid-template-columns:1fr;gap:12px}
   .cp-barrels{grid-template-columns:1fr}
