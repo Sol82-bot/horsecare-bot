@@ -340,43 +340,36 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-video{display:flex;min-width:0}
 .cp-video__frame{
   position:relative;flex:1;display:block;width:100%;min-height:400px;border:0;border-radius:8px;overflow:hidden;cursor:pointer;
-  background:var(--forte-black);color:#fff;text-align:left;isolation:isolate;
-  box-shadow:var(--shadow-lift);
+  background:#ebedf1;color:var(--forte-black);text-align:left;isolation:isolate;   /* = the studio grey of the cover */
+  border:1px solid rgba(65,64,66,.08);box-shadow:var(--shadow-lift);
 }
-.cp-video__bg{position:absolute;inset:0;z-index:-1;transition:transform 1s var(--ease)}
-.cp-video__frame:hover .cp-video__bg{transform:scale(1.03)}
-.cp-video--product .cp-video__bg{
-  background:
-    linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(0,30,45,.34) 100%),
-    radial-gradient(70% 60% at 50% 40%,rgba(68,200,245,.5),transparent 72%),
-    repeating-linear-gradient(115deg,rgba(255,255,255,.04) 0 60px,transparent 60px 140px),
-    linear-gradient(120deg,#0a5f85 0%,#008fc4 60%,#00abe6 100%);
+/* the cover is a light studio packshot: it fills the card and is anchored on the carton */
+.cp-video__cover{
+  position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:50% 100%;
+  transition:transform 1s var(--ease);
 }
-.cp-video__art{
-  position:absolute;left:50%;top:41%;width:84%;height:auto;max-width:none;transform:translate(-50%,-50%);z-index:-1;
-  filter:drop-shadow(0 24px 30px rgba(0,0,0,.35));
-}
+.cp-video__frame:hover .cp-video__cover{transform:scale(1.03)}
 .cp-video__meta{
   position:absolute;left:clamp(20px,2.6vw,34px);right:clamp(20px,2.6vw,34px);bottom:clamp(20px,2.4vw,30px);
   display:flex;align-items:center;gap:22px;
 }
 .cp-video__play{
   position:relative;flex:none;width:64px;height:64px;border-radius:50%;
-  background:rgba(255,255,255,.96);color:var(--forte-blue-deep);
-  display:grid;place-items:center;box-shadow:0 14px 34px rgba(0,0,0,.28);
+  background:var(--forte-blue);color:#fff;
+  display:grid;place-items:center;box-shadow:0 14px 34px rgba(0,171,230,.35);
   transition:transform .35s var(--ease);
 }
-.cp-video__play::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(255,255,255,.4)}
+.cp-video__play::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(0,171,230,.4)}
 .cp-video__play svg{width:34%;height:34%;margin-left:6%}
 .cp-video__frame:hover .cp-video__play{transform:scale(1.07)}
 .cp-video__text{display:flex;flex-direction:column;gap:6px;min-width:0}
-.cp-video__text .micro-label{color:rgba(255,255,255,.78)}
+.cp-video__text .micro-label{color:var(--forte-blue-ink)}
 .cp-video__title{font-size:clamp(19px,1.9vw,24px);font-weight:300;line-height:1.2;letter-spacing:-.01em}
 .cp-video__title b{font-weight:800}
 .cp-video__soon{
   position:absolute;right:clamp(16px,2vw,24px);top:clamp(16px,2vw,24px);
   font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+  padding:7px 13px;border-radius:999px;color:var(--forte-blue-ink);background:rgba(255,255,255,.78);border:1px solid rgba(0,171,230,.28);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
 }
 .cp-video__frame[data-video]:not([data-video=""]) .cp-video__soon{display:none}
@@ -546,7 +539,8 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   nav.menu.open a::after{left:4px;right:4px;bottom:8px}
   .nl-grid{grid-template-columns:1fr;gap:28px}
   .cp-what{grid-template-columns:1fr;gap:48px}
-  .cp-what .cp-video__frame{min-height:0;aspect-ratio:16/9}
+  .cp-what .cp-video__frame{min-height:0;aspect-ratio:4/3}
+  .cp-video__cover{object-position:50% 80%}   /* wide, short frame: keep the whole carton and its reflection in view */
   .cp-dose{grid-template-columns:1fr}
   .cp-dose__panel--out{border-top:1px solid rgba(65,64,66,.08)}
   .cp-subnav__brand,.cp-subnav__cta{display:none}
@@ -562,8 +556,8 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .section-head{margin-bottom:36px}
   .footer-top{grid-template-columns:1fr;gap:36px}
   .cp-hero__in{padding-top:36px;padding-bottom:32px}
-  .cp-what .cp-video__frame{aspect-ratio:4/3}
-  .cp-video__art{width:68%;top:38%}
+  .cp-what .cp-video__frame{aspect-ratio:1/1}   /* square, like the cover itself: carton, reflection and play button never touch */
+  .cp-video__cover{object-position:50% 50%}
   .cp-video__play{width:54px;height:54px}
   .cp-video__meta{gap:18px}
   .cp-benefit{padding:28px 22px 24px}
