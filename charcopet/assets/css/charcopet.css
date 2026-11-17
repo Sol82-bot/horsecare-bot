@@ -223,31 +223,34 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
    The banner holds the carton in the middle, so on wide screens the text sits
    above the carton, and below ~1400px (and on tablets and phones) the text sits
    above the banner instead, which is then shown in full.
-   Banner geometry (px in the 2000 x 452 file): carton x 845-1253, y 285-437;
-   photo starts at x ~1316-1460. Used by the 1400px rules below.            */
+   Banner geometry (px in the 2000 x 451 file): white left side to x ~730, then a
+   light curtain / plant fade; dog and photo from x ~850-960; carton x 595-995,
+   y 275-420 on a blue band that starts at y 346. Used by the rules below.   */
 .cp-hero{
   position:relative;isolation:isolate;overflow:hidden;overflow:clip;
   display:flex;flex-direction:column;
-  background:#faf9f8;                         /* = the flat left edge of the banner */
+  background:#fff;                             /* = the flat left edge of the banner */
 }
 .cp-hero__in{order:1;width:100%;padding-top:52px;padding-bottom:40px}
 .cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin:0 0 24px;font-weight:300}   /* as .hero h1 on the home page */
 .cp-hero .lead{margin-bottom:24px}
 .cp-keymsg{padding-left:16px;border-left:3px solid var(--forte-blue);font-size:17px;line-height:1.45;color:var(--ink)}
 .cp-keymsg b{display:block;font-weight:800;letter-spacing:.01em}
-.cp-hero__media{order:2;aspect-ratio:2000/452;overflow:hidden}
+.cp-hero__media{order:2;aspect-ratio:2000/451;overflow:hidden}
 .cp-hero__media img{width:100%;height:100%;object-fit:cover;object-position:100% 50%}
 
 /* phones and small tablets: only the artwork (carton + photo), full width */
 @media (max-width:760px){
-  .cp-hero__media{aspect-ratio:1155/452}
-  .cp-hero__media img{width:173.16%;max-width:none;margin-left:-73.16%;object-fit:fill}
+  .cp-hero__media{aspect-ratio:1420/451}
+  .cp-hero__media img{width:140.85%;max-width:none;margin-left:-40.85%;object-fit:fill}
 }
 
 /* wide screens: the banner sits behind the text, 483px tall like the home hero */
-@media (min-width:1400px){
+@media (min-width:1280px){
   .cp-hero{min-height:483px;flex-direction:row;align-items:flex-start}
   .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto}
+  /* keep the white side in view as long as the dog still fits: crop from the left only when the screen is narrower than ~1700px (the dog must stay in view) */
+  .cp-hero__media img{object-position:min(0px,calc(100vw - 1700px)) 50%}
   .cp-hero__in{padding-top:40px;padding-bottom:40px}
   .cp-hero__copy{max-width:none}
   .cp-hero .lead{max-width:none;margin-bottom:12px;white-space:nowrap}
