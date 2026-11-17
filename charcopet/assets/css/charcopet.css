@@ -221,10 +221,11 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
    Set up like the hero on the Forte home page: the banner covers the section,
    anchored right; the heading uses the home page type (Dax Light, clamp 36-58px).
    The banner holds the carton in the middle, so on wide screens the text sits
-   above the carton, and below ~1400px (and on tablets and phones) the text sits
+   above the carton, and below 1600px (and on tablets and phones) the text sits
    above the banner instead, which is then shown in full.
    Banner geometry (px in the 2000 x 451 file): white left side to x ~730, then a
-   light curtain / plant fade; dog and photo from x ~850-960; carton x 595-995,
+   light curtain / plant fade; dog from x ~975-1070 to the nose at ~1500; chocolate
+   bar x ~1605-1790, y ~330-392 (must stay fully visible); carton x 595-995,
    y 275-420 on a blue band that starts at y 346. Used by the rules below.   */
 .cp-hero{
   position:relative;isolation:isolate;overflow:hidden;overflow:clip;
@@ -246,11 +247,12 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 }
 
 /* wide screens: the banner sits behind the text, 483px tall like the home hero */
-@media (min-width:1280px){
-  .cp-hero{min-height:483px;flex-direction:row;align-items:flex-start}
+@media (min-width:1600px){
+  .cp-hero{min-height:max(483px,22.55vw);flex-direction:row;align-items:flex-start}   /* 483px like the home hero; taller only on ultra-wide screens, so the picture is never cropped top or bottom */
   .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto}
-  /* keep the white side in view as long as the dog still fits: crop from the left only when the screen is narrower than ~1700px (the dog must stay in view) */
-  .cp-hero__media img{object-position:min(0px,calc(100vw - 1700px)) 50%}
+  /* The chocolate bar (the point of the picture) must never be cut: it ends at x ~1790 of 2000, so the
+     right edge of the banner stays in view and any cropping happens on the white left side only. */
+  .cp-hero__media img{object-position:min(0px,calc(100vw - 1980px)) 50%}
   .cp-hero__in{padding-top:40px;padding-bottom:40px}
   .cp-hero__copy{max-width:none}
   .cp-hero .lead{max-width:none;margin-bottom:12px;white-space:nowrap}
