@@ -248,7 +248,7 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
      height = window - header (77px) - text (308px), kept between "whole banner" (22.55vw, nothing cropped)
      and "left 560px cropped" (31.32vw). The banner stays anchored to the right, so only the white left
      side is ever cropped. */
-@media (min-width:981px) and (max-width:1599px){
+@media (min-width:981px) and (max-width:1359px){
   .cp-hero__in{padding-top:36px;padding-bottom:28px}
   .cp-hero .lead{margin-bottom:16px}
   .cp-keymsg b{display:inline}
@@ -256,24 +256,29 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover;object-position:100% 50%}
 }
 @supports (height:100svh){
-  @media (min-width:981px) and (max-width:1599px){
+  @media (min-width:981px) and (max-width:1359px){
     .cp-hero__media{height:clamp(22.55vw,calc(100svh - 385px),31.32vw)}
   }
 }
 
-/* wide screens: the banner sits behind the text, 483px tall like the home hero */
-@media (min-width:1600px){
-  .cp-hero{min-height:max(483px,22.55vw);flex-direction:row;align-items:flex-start}   /* 483px like the home hero; taller only on ultra-wide screens, so the picture is never cropped top or bottom */
-  .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto}
-  .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover}
-  /* The chocolate bar (the point of the picture) must never be cut: it ends at x ~1790 of 2000, so the
-     right edge of the banner stays in view and any cropping happens on the white left side only. */
-  .cp-hero__media img{object-position:min(0px,calc(100vw - 1980px)) 50%}
-  .cp-hero__in{padding-top:40px;padding-bottom:40px}
+/* Text over the banner (1360px and wider). The banner is anchored to its right edge and only its empty white
+   left side is cropped, so the dog and the chocolate bar (right end at x ~1790 of 2000) are always whole.
+   --cp-h is the hero height: 460px on laptops (the text clears the dog and the carton down to 1360px),
+   483px like the home hero from 1600px, and taller only on ultra-wide screens (no top/bottom cropping). */
+@media (min-width:1360px){
+  .cp-hero{--cp-h:460px;min-height:var(--cp-h);flex-direction:row;align-items:flex-start}
+  .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto;height:auto}
+  .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover;
+    object-position:min(0px,calc(100vw - 3.991 * var(--cp-h) - 12px)) 50%}   /* 3.991 = 1800 / 451: banner x 1800 stays inside */
+  .cp-hero__in{padding-top:30px;padding-bottom:30px}
   .cp-hero__copy{max-width:none}
   .cp-hero .lead{max-width:none;margin-bottom:12px;white-space:nowrap}
   .cp-keymsg{white-space:nowrap}
   .cp-keymsg b{display:inline}
+}
+@media (min-width:1600px){
+  .cp-hero{--cp-h:max(483px,22.55vw)}
+  .cp-hero__in{padding-top:40px;padding-bottom:40px}
 }
 @media (prefers-reduced-motion:no-preference){
   .cp-hero__media img{animation:cp-hero-settle 1.8s var(--ease) both;transform-origin:100% 50%}
