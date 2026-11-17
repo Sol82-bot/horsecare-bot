@@ -167,12 +167,28 @@
     update();
   }
 
-  /* ---------- Videos: placeholder until data-video is filled in ---------- */
+  /* ---------- Videos: inline in the card, pop-up player, or placeholder while data-video is empty ---------- */
   var dialog = $('#cpVideoDialog'), dialogBody = $('#cpVideoBody');
-  $$('.cp-video__frame').forEach(function (btn) {
-    var soon = $('.cp-video__soon', btn);
+
+  function playInline(frame, src, title) {
+    if (frame.classList.contains('is-playing')) return;
+    var v = doc.createElement('video');
+    v.className = 'cp-video__inline';
+    v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('playsinline', ''); v.setAttribute('aria-label', title);
+    var stop = function () { frame.classList.remove('is-playing'); if (v.parentNode) v.parentNode.removeChild(v); };
+    v.addEventListener('ended', stop);       // back to the cover when the film is over (or cannot be played)
+    v.addEventListener('error', stop);
+    frame.appendChild(v); frame.classList.add('is-playing');
+    var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+  }
+
+  $$('.cp-video__frame').forEach(function (frame) {
+    var btn = $('.cp-video__start', frame) || frame;
+    var soon = $('.cp-video__soon', frame);
+    var title = frame.dataset.videoTitle || 'CharcoPet video';
     btn.addEventListener('click', function () {
-      var src = (btn.dataset.video || '').trim();
+      var src = (frame.dataset.video || '').trim();
       if (!src) {
         // Not supplied yet — acknowledge the click instead of doing nothing.
         if (soon && !reduceMotion && soon.animate) {
@@ -180,8 +196,8 @@
         }
         return;
       }
+      if (frame.dataset.play === 'inline') { playInline(frame, src, title); return; }
       if (!dialog || !dialog.showModal) { window.open(src, '_blank', 'noopener'); return; }
-      var title = btn.dataset.videoTitle || 'CharcoPet video';
       if (/\.(mp4|webm|mov)(\?|$)/i.test(src)) {
         var v = doc.createElement('video');
         v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true; v.setAttribute('aria-label', title);
@@ -194,7 +210,7 @@
       }
       dialog.showModal();
     });
-    if (!(btn.dataset.video || '').trim()) btn.setAttribute('aria-label', (btn.dataset.videoTitle || 'Video') + ' (video coming soon)');
+    btn.setAttribute('aria-label', (frame.dataset.video || '').trim() ? 'Play video: ' + title : title + ' (video coming soon)');
   });
   if (dialog) {
     var closeDialog = function () { dialog.close(); };

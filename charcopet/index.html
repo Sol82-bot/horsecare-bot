@@ -31,9 +31,10 @@
     comment above .cp-hero in charcopet.css - update them if the artwork moves.
   · Header/footer links point at the Forte concept site (absolute URLs) so this
     preview works on its own. Inside the site, swap them for relative paths.
-  · Videos: put a YouTube/Vimeo embed URL or an .mp4 path into data-video="" on
-    the two .cp-video__frame buttons; the "coming soon" state disappears and the
-    button opens the player.
+  · Product video: assets/video/charcopet-product.mp4 (square 1080 x 1080, 17 s, H.264,
+    no sound) plays inside the card (data-play="inline"). To use another film, change
+    data-video on .cp-video__frame; without data-play="inline" an embed URL or mp4
+    opens in the pop-up player instead. An empty data-video shows "Video coming soon".
 -->
 
 <script type="application/ld+json">
@@ -151,19 +152,21 @@
         </ul>
       </div>
 
-      <!-- Product video (placeholder until the film is supplied) -->
+      <!-- Product video: square 1080x1080, 17 s, no sound; plays inside the card -->
       <figure class="cp-video cp-video--product reveal d2">
-        <button class="cp-video__frame" type="button" data-video="" data-video-title="What is CharcoPet? Key benefits">
+        <div class="cp-video__frame" data-video="assets/video/charcopet-product.mp4" data-play="inline" data-video-title="What is CharcoPet? Key benefits">
           <img class="cp-video__cover" src="assets/img/product-cover.webp" width="1254" height="1254" alt="CharcoPet carton with two 30 ml dial-dose syringes" loading="lazy" decoding="async">
-          <span class="cp-video__soon">Video coming soon</span>
-          <span class="cp-video__meta">
-            <span class="cp-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.8v16.4a.8.8 0 0 0 1.2.7l13.4-8.2a.8.8 0 0 0 0-1.4L7.2 3.1A.8.8 0 0 0 6 3.8Z" fill="currentColor"/></svg></span>
-            <span class="cp-video__text">
-              <span class="micro-label">Product video</span>
-              <span class="cp-video__title">What is CharcoPet? <b>Key benefits</b></span>
+          <button class="cp-video__start" type="button">
+            <span class="cp-video__soon">Video coming soon</span>
+            <span class="cp-video__meta">
+              <span class="cp-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.8v16.4a.8.8 0 0 0 1.2.7l13.4-8.2a.8.8 0 0 0 0-1.4L7.2 3.1A.8.8 0 0 0 6 3.8Z" fill="currentColor"/></svg></span>
+              <span class="cp-video__text">
+                <span class="micro-label">Product video</span>
+                <span class="cp-video__title">What is CharcoPet? <b>Key benefits</b></span>
+              </span>
             </span>
-          </span>
-        </button>
+          </button>
+        </div>
       </figure>
     </div>
   </div>
