@@ -262,10 +262,11 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
    the chocolate are always whole and only the empty left side is cropped. 483px tall like the home hero;
    taller only on ultra-wide screens (from 2142px), so the picture is never cropped top or bottom. */
 @media (min-width:1280px){
-  /* --cp-shift moves the whole picture to the right (the right edge is cropped by the same amount, the
-     chocolate bar is far enough from it). 0 = the picture touches the right edge of the window.
+  /* --cp-shift moves the whole picture to the right (the right edge is cropped by the same amount).
+     0 = the picture touches the right edge of the window. 8.2vw = 3.2vw + 5vw; the upper limit
+     (max(225px, 10.5vw)) is the shift at which the chocolate bar, banner x ~1790, is still whole.
      The strip that opens on the left of ultra-wide screens takes the banner's own edge colour (#f2f2f2). */
-  .cp-hero{--cp-shift:clamp(32px,3.2vw,64px);min-height:max(483px,22.55vw);flex-direction:row;align-items:flex-start;background:#f2f2f2}
+  .cp-hero{--cp-shift:min(8.2vw,max(225px,10.5vw));min-height:max(483px,22.55vw);flex-direction:row;align-items:flex-start;background:#f2f2f2}
   .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto;height:auto}
   .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover;object-position:calc(100% + var(--cp-shift)) 50%}
   .cp-hero__in{padding-top:40px;padding-bottom:40px}
