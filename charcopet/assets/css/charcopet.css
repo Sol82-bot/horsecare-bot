@@ -157,28 +157,6 @@ nav.menu a.active{color:var(--forte-blue-deep)}
 .section{padding:120px 0}
 .section-tint{background:var(--forte-grey-tint)}
 
-/* Dark sections: give the page rhythm and a clear break from the light hero.
-   --dark is the CharcoPet taupe, --graphite adds the Forte graphite (#414042). */
-.section--dark{
-  position:relative;overflow:hidden;color:#fff;
-  background:
-    radial-gradient(60% 90% at 88% 0%,rgba(255,255,255,.09),transparent 62%),
-    linear-gradient(120deg,#7d6561 0%,#6a5350 48%,#54413f 100%);
-}
-.section--dark::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:repeating-linear-gradient(115deg,rgba(255,255,255,.04) 0 60px,transparent 60px 140px);
-}
-.section--dark>.wrap{position:relative}
-.section--graphite{
-  background:
-    radial-gradient(60% 90% at 12% 0%,rgba(0,171,230,.14),transparent 62%),
-    linear-gradient(120deg,#4d4c4f 0%,#414042 50%,#353437 100%);
-}
-.section--dark .eyebrow{color:var(--forte-blue-light)}
-.section--dark h2{color:#fff}
-.section--dark h2 em{background-image:linear-gradient(120deg,#a8e7ff 0%,#5fd0f8 55%,#2bbcf0 100%)}
-.section--dark .lead{color:rgba(255,255,255,.88)}
 .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:52px;flex-wrap:wrap}
 .section-head .lead{margin-top:14px}
 
@@ -327,17 +305,17 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 /* ---------- What is CharcoPet ---------- */
 .cp-what{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:72px;align-items:stretch}
 .cp-what h2{margin-bottom:18px}
-.cp-features{margin-top:36px;border-top:1px solid rgba(255,255,255,.2)}
-.cp-feature{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.2)}
-.cp-feature h3{font-size:17px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#fff;line-height:1.3;margin-bottom:6px}
-.cp-feature p{font-size:15px;color:rgba(255,255,255,.82);line-height:1.55}
+.cp-features{margin-top:36px;border-top:1px solid rgba(65,64,66,.12)}
+.cp-feature{padding:22px 0;border-bottom:1px solid rgba(65,64,66,.12)}
+.cp-feature h3{font-size:17px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--cp-taupe);line-height:1.3;margin-bottom:6px}
+.cp-feature p{font-size:15px;color:#5c5b60;line-height:1.55}
 
 /* ---------- Video cards (placeholders until the films are supplied) ---------- */
 .cp-video{display:flex;min-width:0}
 .cp-video__frame{
   position:relative;flex:1;display:block;width:100%;min-height:400px;border:0;border-radius:8px;overflow:hidden;cursor:pointer;
   background:var(--forte-black);color:#fff;text-align:left;isolation:isolate;
-  box-shadow:0 30px 70px rgba(0,0,0,.35);
+  box-shadow:var(--shadow-lift);
 }
 .cp-video__bg{position:absolute;inset:0;z-index:-1;transition:transform 1s var(--ease)}
 .cp-video__frame:hover .cp-video__bg{transform:scale(1.03)}
@@ -392,7 +370,7 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 /* ---------- Benefits: four cards in one row (as the four businesses on the home page) ---------- */
 .cp-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .cp-benefit{
-  position:relative;background:#fff;border:1px solid rgba(65,64,66,.08);border-radius:8px;
+  position:relative;background:#fff;border:1px solid rgba(65,64,66,.1);border-radius:8px;box-shadow:0 8px 28px rgba(20,30,40,.05);
   padding:32px 26px 28px;overflow:hidden;display:flex;flex-direction:column;
   transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;
 }
@@ -423,12 +401,12 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 /* Dose guide */
 .cp-dose{
   --ink:var(--forte-black);               /* graphite #414042 throughout the dose guide */
-  border-radius:8px;background:#fff;overflow:hidden;
-  box-shadow:0 30px 70px rgba(0,0,0,.35);
+  border:1px solid rgba(65,64,66,.08);border-radius:8px;background:#fff;overflow:hidden;
+  box-shadow:var(--shadow-soft);
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
 }
 .cp-dose__panel{padding:44px 46px 40px;min-width:0}
-.cp-dose__panel--out{background:var(--cp-taupe-tint);display:flex;flex-direction:column;justify-content:center}
+.cp-dose__panel--out{background:#eef7fb;display:flex;flex-direction:column;justify-content:center}
 .cp-dose__label--out{margin-bottom:14px}
 .cp-dose__head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:6px}
 .cp-dose h3{font-size:22px;font-weight:700;letter-spacing:0;color:var(--ink)}
