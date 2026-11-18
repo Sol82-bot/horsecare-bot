@@ -249,16 +249,17 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 @media (max-width:1279px){
   .cp-hero__media{top:auto;height:calc(100vw / 2.65);
     -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 38%);mask-image:linear-gradient(to bottom,transparent 0,#000 38%)}
-  .cp-hero__media img{object-position:78% 100%}
+  .cp-hero__media img{object-position:96% 100%}
   .cp-hero .cp-hero__in{padding-top:52px;padding-bottom:calc(100vw / 2.65 * .84)}
   .cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin-bottom:16px}
   .cp-hero .lead{margin-bottom:20px;max-width:560px}
   .cp-keymsg{font-size:clamp(20px,2.6vw,28px)}
 }
 @media (max-width:600px){
-  .cp-hero__media{height:calc(100vw / 1.6)}
-  .cp-hero__media img{object-position:74% 100%}
-  .cp-hero .cp-hero__in{padding-top:32px;padding-bottom:calc(100vw / 1.6 * .84)}
+  /* phones: x ~0.46-0.95 of the banner, so the dog and the chocolate are both whole */
+  .cp-hero__media{height:calc(100vw / 2.05)}
+  .cp-hero__media img{object-position:92% 100%}
+  .cp-hero .cp-hero__in{padding-top:32px;padding-bottom:calc(100vw / 2.05 * .8)}
 }
 @media (prefers-reduced-motion:no-preference){
   .cp-hero__media img{animation:cp-hero-settle 1.8s var(--ease) both;transform-origin:100% 50%}
