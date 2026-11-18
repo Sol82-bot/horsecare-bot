@@ -217,43 +217,48 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 
 /* ========================= 2. CHARCOPET COMPONENTS ======================== */
 
-/* ---------- Hero: static banner with live text over it ----------
-   Banner geometry (fractions of the 4280 x 966 file): pure white left edge, light top-left area with a
-   faint Forte watermark up to x ~0.45 and y ~0.62; carton and syringes x 0.285-0.49, y 0.63-0.97; photo
-   (dog, floor, chocolate) from x ~0.45 to the right edge. Used by the rules below.
-   From 1280px the banner is shown whole (no crop) with the heading on its light top-left; on narrower
-   screens the heading sits above the banner and the empty left side is cropped. The key message always
-   sits in the white strip under the banner - on wide screens right under the carton.            */
-.cp-hero{position:relative;isolation:isolate;background:#fff}
-.cp-hero__stage{position:relative;display:flex;flex-direction:column}
-.cp-hero__in{order:1;width:100%;padding-top:52px;padding-bottom:36px}
-.cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin:0 0 20px;font-weight:300}   /* as .hero h1 on the home page */
-.cp-hero .lead{margin:0}
-/* the white left side is cropped from x = 0.255, just left of the syringe tips */
-.cp-hero__media{order:2;aspect-ratio:3189/966;overflow:hidden}
-.cp-hero__media img{width:134.2%;max-width:none;height:100%;margin-left:-34.2%;object-fit:fill}
-
-.cp-hero__key{padding:22px 32px 36px;max-width:var(--max);margin:0 auto}
+/* ---------- Hero: static banner with all of the text over it ----------
+   Banner geometry (fractions of the 4280 x 966 file): pure white left edge, light area with a faint Forte
+   watermark up to x ~0.42 over the whole height; photo (window, dog, floor, chocolate) from x ~0.42 to the
+   right edge, the dog x ~0.49-0.80, the chocolate x ~0.84-0.93. Used by the rules below.
+   From 1280px the banner is shown whole (no crop) and the text column ends at 42% of the window.
+   Narrower, the hero gets taller than the banner: the banner is pinned to the bottom right and the text
+   sits over the white space and the bright, faded top of the picture.                                */
+.cp-hero{position:relative;isolation:isolate;background:#fff;overflow:hidden;overflow:clip}
+.cp-hero__media{position:absolute;inset:0;z-index:-1}
+.cp-hero__media img{width:100%;max-width:100%;height:100%;object-fit:cover}
+.cp-hero__in{position:relative}
+.cp-hero h1{font-weight:300;line-height:1.12}
+.cp-hero .lead{max-width:none}
 .cp-keymsg{
   padding-left:16px;border-left:4px solid var(--forte-blue);
-  font-size:clamp(20px,2.4vw,28px);line-height:1.25;font-weight:700;letter-spacing:-.005em;color:var(--ink);
-  text-wrap:balance;
+  line-height:1.25;font-weight:700;letter-spacing:-.005em;color:var(--ink);
 }
 .cp-keymsg b{display:block;font-weight:800;color:var(--forte-blue-ink)}
 
 @media (min-width:1280px){
-  .cp-hero__stage{display:block;aspect-ratio:4280/966}
-  .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto}
-  .cp-hero__media img{width:100%;max-width:100%;height:100%;margin-left:0;object-fit:cover}
-  /* the light area ends at 45% of the window; the text keeps clear of the carton below it */
-  .cp-hero__in{padding-top:clamp(22px,2.3vw,60px);padding-bottom:0}
-  .cp-hero__copy{max-width:calc(45vw - max(32px,(100vw - var(--max)) / 2 + 32px))}
-  .cp-hero h1{font-size:clamp(40px,3.05vw,78px);line-height:1.12;margin-bottom:clamp(12px,1vw,24px)}
-  .cp-hero .lead{font-size:clamp(16px,1.2vw,26px);max-width:none}
-  /* key message right under the carton (left edge at 28.5% of the banner) */
-  .cp-hero__key{max-width:none;margin:0;padding:clamp(16px,1.2vw,26px) 32px clamp(30px,2.4vw,52px) 28.5vw}
-  .cp-keymsg{font-size:clamp(22px,1.65vw,36px)}
-  .cp-keymsg span{white-space:nowrap}
+  .cp-hero{aspect-ratio:4280/966}
+  .cp-hero__in{height:100%;display:flex;align-items:center}
+  .cp-hero__copy{max-width:calc(42vw - max(32px,(100vw - var(--max)) / 2 + 32px));padding:clamp(18px,1.6vw,40px) 0}
+  .cp-hero h1{font-size:clamp(40px,3.05vw,78px);margin-bottom:clamp(10px,.8vw,20px)}
+  .cp-hero .lead{font-size:clamp(16px,1.05vw,24px);line-height:1.5;margin-bottom:clamp(14px,1.2vw,28px)}
+  .cp-keymsg{font-size:clamp(21px,1.45vw,36px)}
+}
+/* Tablets and phones: banner pinned to the bottom, cropped from the left (the white side) and
+   faded into the page at its top, so the text block can run over it. */
+@media (max-width:1279px){
+  .cp-hero__media{top:auto;height:calc(100vw / 2.65);
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 38%);mask-image:linear-gradient(to bottom,transparent 0,#000 38%)}
+  .cp-hero__media img{object-position:78% 100%}
+  .cp-hero .cp-hero__in{padding-top:52px;padding-bottom:calc(100vw / 2.65 * .84)}
+  .cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin-bottom:16px}
+  .cp-hero .lead{margin-bottom:20px;max-width:560px}
+  .cp-keymsg{font-size:clamp(20px,2.6vw,28px)}
+}
+@media (max-width:600px){
+  .cp-hero__media{height:calc(100vw / 1.6)}
+  .cp-hero__media img{object-position:74% 100%}
+  .cp-hero .cp-hero__in{padding-top:32px;padding-bottom:calc(100vw / 1.6 * .84)}
 }
 @media (prefers-reduced-motion:no-preference){
   .cp-hero__media img{animation:cp-hero-settle 1.8s var(--ease) both;transform-origin:100% 50%}
@@ -544,8 +549,6 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .section{padding:88px 0}
   .section-head{margin-bottom:36px}
   .footer-top{grid-template-columns:1fr;gap:36px}
-  .cp-hero__in{padding-top:36px;padding-bottom:28px}
-  .cp-hero__key{padding:18px 20px 28px}
   .cp-video__play{width:54px;height:54px}
   .cp-video__meta{gap:18px}
   .cp-benefit{padding:28px 22px 24px}

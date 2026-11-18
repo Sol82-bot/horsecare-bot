@@ -25,9 +25,8 @@
 <!--
   INTEGRATION NOTES
   · Hero banner: assets/img/hero-banner.webp (4280 x 966, the supplied artwork,
-    carton included). The text is live: the heading sits on the light
-    top-left of the picture, the key message in the strip under the carton. The
-    carton and photo coordinates used to keep the text clear of them are in the
+    no carton). All of the hero text is live and sits on the light left side of
+    the picture. The photo coordinates used to keep the text clear of it are in the
     comment above .cp-hero in charcopet.css - update them if the artwork moves.
   · Header/footer links point at the Forte concept site (absolute URLs) so this
     preview works on its own. Inside the site, swap them for relative paths.
@@ -112,21 +111,17 @@
 </nav>
 
 <!-- ===================== HERO =====================
-     Static banner with live text over it; the key message sits under the carton. -->
+     Static banner with all of the hero text live over its light left side. -->
 <section class="cp-hero" aria-labelledby="cp-hero-title">
-  <div class="cp-hero__stage">
-    <div class="cp-hero__media">
-      <img src="assets/img/hero-banner.webp" width="4280" height="966" alt="A curious cocker spaniel sniffing a bar of chocolate on a wooden floor, with the CharcoPet carton and two syringes in front" fetchpriority="high" decoding="async">
-    </div>
-    <div class="wrap cp-hero__in">
-      <div class="cp-hero__copy">
-        <h1 class="reveal" id="cp-hero-title">We love their<br><em>curiosity.</em></h1>
-        <p class="lead reveal d1">But when it gets them into trouble, how we care for them matters.</p>
-      </div>
-    </div>
+  <div class="cp-hero__media">
+    <img src="assets/img/hero-banner.webp" width="4280" height="966" alt="A curious cocker spaniel sniffing a bar of chocolate on a wooden floor" fetchpriority="high" decoding="async">
   </div>
-  <div class="cp-hero__key">
-    <p class="cp-keymsg reveal d2"><b>50% Activated Charcoal:</b> <span>More Charcoal. Less To Administer.</span></p>
+  <div class="wrap cp-hero__in">
+    <div class="cp-hero__copy">
+      <h1 class="reveal" id="cp-hero-title">We love their<br><em>curiosity.</em></h1>
+      <p class="lead reveal d1">But when it gets them into trouble, how we care for them matters.</p>
+      <p class="cp-keymsg reveal d2"><b>50% Activated Charcoal:</b> <span>More Charcoal. Less To Administer.</span></p>
+    </div>
   </div>
 </section>
 
