@@ -27,9 +27,10 @@
       // Where the bar sits in the normal flow = bottom of the block before it.
       // (offsetTop of a sticky element reports its *stuck* position, so it can't be used.)
       var before = subnav.previousElementSibling;
-      var naturalTop = before ? before.offsetTop + before.offsetHeight : 0;
+      // (When the bar opens the page, under the site header, that is the top of its parent.)
+      var naturalTop = before ? before.offsetTop + before.offsetHeight : subnav.parentElement.offsetTop;
       var stuckAt = naturalTop - (hidden || !header ? 0 : header.offsetHeight);
-      var past = y >= stuckAt - 1;
+      var past = before ? y >= stuckAt - 1 : y > Math.max(stuckAt, 0);
       subnav.classList.toggle('is-stuck', past);
       var menuOpen = menu && menu.classList.contains('open');
       // Once the product bar takes over, the site header steps aside on the way

@@ -24,9 +24,9 @@
 
 <!--
   INTEGRATION NOTES
-  · Hero banner: assets/img/hero-banner.webp (4000 x 902: the supplied 2000 x 451
-    file enlarged 2x and gently sharpened for high-density screens; replace it
-    with the original 4280 x 966 artwork when it is available - same proportions). The text is live and sits on the white left side. The
+  · Hero banner: assets/img/hero-banner.webp (4280 x 966, the supplied artwork,
+    carton included). The text is live: the heading sits on the light
+    top-left of the picture, the key message in the strip under the carton. The
     carton and photo coordinates used to keep the text clear of them are in the
     comment above .cp-hero in charcopet.css - update them if the artwork moves.
   · Header/footer links point at the Forte concept site (absolute URLs) so this
@@ -96,21 +96,6 @@
 
 <main id="main">
 
-<!-- ===================== HERO =====================
-     Static banner with live text over it. -->
-<section class="cp-hero" aria-labelledby="cp-hero-title">
-  <div class="cp-hero__media">
-    <img src="assets/img/hero-banner.webp" width="4000" height="902" alt="A curious cocker spaniel sniffing a bar of chocolate on a living-room floor, with the CharcoPet carton and two syringes in front of a blue shape" fetchpriority="high" decoding="async">
-  </div>
-  <div class="wrap cp-hero__in">
-    <div class="cp-hero__copy">
-      <h1 class="reveal" id="cp-hero-title">We love their<br><em>curiosity.</em></h1>
-      <p class="lead reveal d1">But when it gets them into trouble, how we care for them matters.</p>
-      <p class="cp-keymsg reveal d2"><b>50% activated charcoal.</b> More charcoal. Less to administer.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== IN-PAGE NAVIGATION ===================== -->
 <nav class="cp-subnav" id="cpSubnav" aria-label="CharcoPet page sections">
   <div class="wrap cp-subnav__in">
@@ -122,10 +107,28 @@
       <a href="#faq">FAQ</a>
       <a href="#blog">Blog</a>
     </div>
-    <a class="cp-subnav__cta" href="#get-in-touch">Get in touch</a>
   </div>
   <span class="cp-subnav__progress" aria-hidden="true"></span>
 </nav>
+
+<!-- ===================== HERO =====================
+     Static banner with live text over it; the key message sits under the carton. -->
+<section class="cp-hero" aria-labelledby="cp-hero-title">
+  <div class="cp-hero__stage">
+    <div class="cp-hero__media">
+      <img src="assets/img/hero-banner.webp" width="4280" height="966" alt="A curious cocker spaniel sniffing a bar of chocolate on a wooden floor, with the CharcoPet carton and two syringes in front" fetchpriority="high" decoding="async">
+    </div>
+    <div class="wrap cp-hero__in">
+      <div class="cp-hero__copy">
+        <h1 class="reveal" id="cp-hero-title">We love their<br><em>curiosity.</em></h1>
+        <p class="lead reveal d1">But when it gets them into trouble, how we care for them matters.</p>
+      </div>
+    </div>
+  </div>
+  <div class="cp-hero__key">
+    <p class="cp-keymsg reveal d2"><b>50% Activated Charcoal:</b> <span>More Charcoal. Less To Administer.</span></p>
+  </div>
+</section>
 
 <!-- ===================== WHAT IS CHARCOPET ===================== -->
 <section class="section section-tint cp-anchor" id="what-is-charcopet" aria-labelledby="what-title">
@@ -183,28 +186,28 @@
     </div>
 
     <div class="cp-benefits">
-      <article class="cp-benefit reveal" style="--unit:var(--cp-taupe);--unit-ink:var(--cp-taupe)">
+      <article class="cp-benefit reveal" style="--unit:var(--cp-taupe);--unit-ink:var(--cp-taupe);--unit-grad:var(--cp-grad-taupe);--unit-tint:var(--cp-taupe-tint)">
         <div class="cp-benefit__art"><img src="assets/img/benefit-concentration.webp" width="580" height="161" alt="" loading="lazy" decoding="async"></div>
         <h3>High concentration</h3>
         <p class="cp-benefit__area">50% activated charcoal</p>
         <p>With 50% activated charcoal, CharcoPet delivers a high charcoal concentration per ml, minimising the volume of administration and reducing handling stress.</p>
       </article>
 
-      <article class="cp-benefit reveal d1" style="--unit:var(--forte-blue);--unit-ink:var(--forte-blue-ink)">
+      <article class="cp-benefit reveal d1" style="--unit:var(--forte-blue);--unit-ink:var(--forte-blue-ink);--unit-grad:var(--grad);--unit-tint:#e8f6fc">
         <div class="cp-benefit__art"><img src="assets/img/benefit-pack.webp" width="440" height="169" alt="" loading="lazy" decoding="async"></div>
         <h3>2 × 30 ml syringe pack</h3>
         <p class="cp-benefit__area">Up to 15 kg per syringe</p>
         <p>Each syringe provides the right amount for up to 15 kg bodyweight. The 30 ml syringe is also much more ergonomic than larger syringes.</p>
       </article>
 
-      <article class="cp-benefit reveal d2" style="--unit:var(--cp-taupe);--unit-ink:var(--cp-taupe)">
+      <article class="cp-benefit reveal d2" style="--unit:var(--cp-taupe);--unit-ink:var(--cp-taupe);--unit-grad:var(--cp-grad-taupe);--unit-tint:var(--cp-taupe-tint)">
         <div class="cp-benefit__art"><img src="assets/img/benefit-marine.webp" width="220" height="256" alt="" loading="lazy" decoding="async"></div>
         <h3>Marine bioactive support</h3>
         <p class="cp-benefit__area">Seaweed meal</p>
         <p>Seaweed meal (<em>Ascophyllum</em>, <em>Gracilaria</em>, <em>Ulva</em> spp.) provides natural polysaccharides that help soothe the gut lining and support recovery.<sup>1–3</sup></p>
       </article>
 
-      <article class="cp-benefit reveal d3" style="--unit:var(--forte-blue);--unit-ink:var(--forte-blue-ink)">
+      <article class="cp-benefit reveal d3" style="--unit:var(--forte-blue);--unit-ink:var(--forte-blue-ink);--unit-grad:var(--grad);--unit-tint:#e8f6fc">
         <div class="cp-benefit__art"><img src="assets/img/benefit-species.webp" width="255" height="256" alt="" loading="lazy" decoding="async"></div>
         <h3>Multi-species</h3>
         <p class="cp-benefit__area">Dogs &amp; cats</p>
@@ -212,7 +215,7 @@
       </article>
     </div>
 
-    <details class="cp-refs">
+    <details class="cp-refs" open>
       <summary>References
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
@@ -336,7 +339,7 @@
         </details>
       </div>
 
-      <details class="cp-refs" id="faq-refs">
+      <details class="cp-refs" id="faq-refs" open>
         <summary>References
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </summary>

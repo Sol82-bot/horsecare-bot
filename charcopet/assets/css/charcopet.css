@@ -218,62 +218,42 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 /* ========================= 2. CHARCOPET COMPONENTS ======================== */
 
 /* ---------- Hero: static banner with live text over it ----------
-   Set up like the hero on the Forte home page: the banner covers the section, anchored to its right
-   edge, 483px tall; the heading uses the home page type (Dax Light, clamp 36-58px). On screens from
-   1280px the text sits on the banner's light left side, above the carton; on narrower screens it sits
-   above the banner.
-   Banner geometry (px in the 2000 x 451 file; the file is shipped enlarged 2x, same proportions):
-   light grey-to-white left side to x ~860 with a faint Forte watermark; carton x 860-1230, y 276-415;
-   photo in a slanted frame, its left edge x ~1300-1560; chocolate bar x ~1680-1745, y ~330-355; blue and
-   brown shapes to the right edge. Used by the rules below.                                           */
-.cp-hero{
-  position:relative;isolation:isolate;overflow:hidden;overflow:clip;
-  display:flex;flex-direction:column;
-  background:#fff;
-}
-.cp-hero__in{order:1;width:100%;padding-top:52px;padding-bottom:40px}
-.cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin:0 0 24px;font-weight:300}   /* as .hero h1 on the home page */
-.cp-hero .lead{margin-bottom:24px}
-.cp-keymsg{padding-left:16px;border-left:3px solid var(--forte-blue);font-size:17px;line-height:1.45;color:var(--ink)}
-.cp-keymsg b{display:block;font-weight:800;letter-spacing:.01em}
-/* Text above the banner (narrower than 1280px). The empty left side of the banner is cropped off - from
-   x = 800 of 2000, just left of the carton - and the right side is untouched, so the carton, the photo and
-   the chocolate fill the strip edge to edge. */
-.cp-hero__media{order:2;aspect-ratio:1200/451;overflow:hidden}
-.cp-hero__media img{width:166.67%;max-width:none;height:100%;margin-left:-66.67%;object-fit:fill}
+   Banner geometry (fractions of the 4280 x 966 file): pure white left edge, light top-left area with a
+   faint Forte watermark up to x ~0.45 and y ~0.62; carton and syringes x 0.285-0.49, y 0.63-0.97; photo
+   (dog, floor, chocolate) from x ~0.45 to the right edge. Used by the rules below.
+   From 1280px the banner is shown whole (no crop) with the heading on its light top-left; on narrower
+   screens the heading sits above the banner and the empty left side is cropped. The key message always
+   sits in the white strip under the banner - on wide screens right under the carton.            */
+.cp-hero{position:relative;isolation:isolate;background:#fff}
+.cp-hero__stage{position:relative;display:flex;flex-direction:column}
+.cp-hero__in{order:1;width:100%;padding-top:52px;padding-bottom:36px}
+.cp-hero h1{font-size:clamp(36px,4.6vw,58px);margin:0 0 20px;font-weight:300}   /* as .hero h1 on the home page */
+.cp-hero .lead{margin:0}
+/* the white left side is cropped from x = 0.255, just left of the syringe tips */
+.cp-hero__media{order:2;aspect-ratio:3189/966;overflow:hidden}
+.cp-hero__media img{width:134.2%;max-width:none;height:100%;margin-left:-34.2%;object-fit:fill}
 
-/* iPad in landscape and small laptops: a tighter text block, and the banner height follows the window
-   (between the whole banner, 22.55vw, and the left-cropped one, 37.6vw), so the carton and the chocolate
-   stay on the first screen. Anchored right, so only the empty left side is ever cropped. */
-@media (min-width:981px) and (max-width:1279px){
-  .cp-hero__in{padding-top:36px;padding-bottom:28px}
-  .cp-hero .lead{margin-bottom:16px}
-  .cp-keymsg b{display:inline}
-  .cp-hero__media{aspect-ratio:auto;height:clamp(22.55vw,calc(100vh - 395px),37.6vw)}
-  .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover;object-position:100% 50%}
+.cp-hero__key{padding:22px 32px 36px;max-width:var(--max);margin:0 auto}
+.cp-keymsg{
+  padding-left:16px;border-left:4px solid var(--forte-blue);
+  font-size:clamp(20px,2.4vw,28px);line-height:1.25;font-weight:700;letter-spacing:-.005em;color:var(--ink);
+  text-wrap:balance;
 }
-@supports (height:100svh){
-  @media (min-width:981px) and (max-width:1279px){
-    .cp-hero__media{height:clamp(22.55vw,calc(100svh - 395px),37.6vw)}
-  }
-}
+.cp-keymsg b{display:block;font-weight:800;color:var(--forte-blue-ink)}
 
-/* Text over the banner (1280px and wider): the banner covers the whole hero, anchored right, so the photo and
-   the chocolate are always whole and only the empty left side is cropped. 483px tall like the home hero;
-   taller only on ultra-wide screens (from 2142px), so the picture is never cropped top or bottom. */
 @media (min-width:1280px){
-  /* --cp-shift moves the whole picture to the right (the right edge is cropped by the same amount).
-     0 = the picture touches the right edge of the window. 8.2vw = 3.2vw + 5vw; the upper limit
-     (max(225px, 10.5vw)) is the shift at which the chocolate bar, banner x ~1790, is still whole.
-     The strip that opens on the left of ultra-wide screens takes the banner's own edge colour (#f2f2f2). */
-  .cp-hero{--cp-shift:min(8.2vw,max(225px,10.5vw));min-height:max(483px,22.55vw);flex-direction:row;align-items:flex-start;background:#f2f2f2}
-  .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto;height:auto}
-  .cp-hero__media img{width:100%;max-width:100%;margin-left:0;object-fit:cover;object-position:calc(100% + var(--cp-shift)) 50%}
-  .cp-hero__in{padding-top:40px;padding-bottom:40px}
-  .cp-hero__copy{max-width:none}
-  .cp-hero .lead{max-width:none;margin-bottom:12px;white-space:nowrap}
-  .cp-keymsg{white-space:nowrap}
-  .cp-keymsg b{display:inline}
+  .cp-hero__stage{display:block;aspect-ratio:4280/966}
+  .cp-hero__media{position:absolute;inset:0;z-index:-1;aspect-ratio:auto}
+  .cp-hero__media img{width:100%;max-width:100%;height:100%;margin-left:0;object-fit:cover}
+  /* the light area ends at 45% of the window; the text keeps clear of the carton below it */
+  .cp-hero__in{padding-top:clamp(22px,2.3vw,60px);padding-bottom:0}
+  .cp-hero__copy{max-width:calc(45vw - max(32px,(100vw - var(--max)) / 2 + 32px))}
+  .cp-hero h1{font-size:clamp(40px,3.05vw,78px);line-height:1.12;margin-bottom:clamp(12px,1vw,24px)}
+  .cp-hero .lead{font-size:clamp(16px,1.2vw,26px);max-width:none}
+  /* key message right under the carton (left edge at 28.5% of the banner) */
+  .cp-hero__key{max-width:none;margin:0;padding:clamp(16px,1.2vw,26px) 32px clamp(30px,2.4vw,52px) 28.5vw}
+  .cp-keymsg{font-size:clamp(22px,1.65vw,36px)}
+  .cp-keymsg span{white-space:nowrap}
 }
 @media (prefers-reduced-motion:no-preference){
   .cp-hero__media img{animation:cp-hero-settle 1.8s var(--ease) both;transform-origin:100% 50%}
@@ -297,7 +277,7 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   white-space:nowrap;flex:none;
 }
 .cp-subnav__brand sup{font-size:.5em;font-weight:700}
-.cp-subnav__links{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none;min-width:0}
+.cp-subnav__links{display:flex;gap:2px;margin-left:auto;margin-right:-12px;overflow-x:auto;scrollbar-width:none;min-width:0}
 .cp-subnav__links::-webkit-scrollbar{display:none}
 .cp-subnav__links a{
   position:relative;padding:9px 12px;font-size:14px;font-weight:700;white-space:nowrap;color:var(--forte-black);
@@ -309,12 +289,6 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 }
 .cp-subnav__links a:hover,.cp-subnav__links a[aria-current="true"]{color:var(--forte-blue-ink)}
 .cp-subnav__links a:hover::after,.cp-subnav__links a[aria-current="true"]::after{transform:scaleX(1)}
-.cp-subnav__cta{
-  display:inline-flex;align-items:center;gap:8px;flex:none;background:var(--forte-blue);color:#fff;
-  font-weight:700;font-size:13.5px;padding:9px 20px;clip-path:var(--chamfer);
-  transition:background .25s,transform .25s var(--ease);
-}
-.cp-subnav__cta:hover{background:var(--forte-blue-deep);transform:translateY(-1px)}
 .cp-subnav__progress{
   position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--grad);
   transform:scaleX(0);transform-origin:left;
@@ -396,9 +370,21 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   padding:32px 26px 28px;overflow:hidden;display:flex;flex-direction:column;
   transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;
 }
-.cp-benefit::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--unit,var(--forte-blue))}
+.cp-benefit::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--unit-grad,var(--grad));z-index:1;transition:height .35s var(--ease)}
 .cp-benefit:hover{transform:translateY(-8px);box-shadow:var(--shadow-lift);border-color:transparent}
-.cp-benefit__art{height:96px;margin-bottom:22px;display:flex;align-items:center}
+.cp-benefit:hover::before{height:6px}
+/* art on a tinted panel in the card's own colour, for a livelier row */
+.cp-benefit__art{
+  height:150px;margin:-32px -26px 24px;padding:26px 26px 22px;display:flex;align-items:center;
+  background:var(--unit-tint,#eef8fc);position:relative;overflow:hidden;
+}
+.cp-benefit__art::after{
+  content:"";position:absolute;right:-30px;bottom:-40px;width:150px;height:110px;background:var(--unit,var(--forte-blue));
+  opacity:.09;clip-path:var(--chamfer);transition:transform .5s var(--ease),opacity .35s;
+}
+.cp-benefit:hover .cp-benefit__art::after{transform:translateX(-14px);opacity:.15}
+.cp-benefit__art img{position:relative;z-index:1;transition:transform .5s var(--ease)}
+.cp-benefit:hover .cp-benefit__art img{transform:scale(1.04)}
 .cp-benefit__art img{max-width:100%;max-height:100%;width:auto;height:auto;object-position:left center}
 .cp-benefit h3{font-size:18px;font-weight:700;letter-spacing:0;color:var(--ink);margin-bottom:4px;line-height:1.3}
 @media (min-width:1081px) and (max-width:1279px){.cp-benefit h3{min-height:2.6em}}   /* keeps the labels level when a title wraps */
@@ -415,8 +401,10 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 .cp-refs summary::-webkit-details-marker{display:none}
 .cp-refs summary svg{transition:transform .3s var(--ease)}
 .cp-refs[open] summary svg{transform:rotate(180deg)}
-.cp-refs ol{list-style:decimal;padding:0 0 8px 20px;font-size:13px;color:#6a6970;line-height:1.6;max-width:92ch}
-.cp-refs li{margin-bottom:8px;padding-left:4px}
+/* open by default, two columns: shorter and tidier; one column on phones */
+.cp-refs ol{list-style:decimal;padding:0 0 8px 20px;font-size:13px;color:#6a6970;line-height:1.6;columns:2;column-gap:56px}
+.cp-refs li{margin-bottom:10px;padding-left:4px;break-inside:avoid}
+@media (max-width:720px){.cp-refs ol{columns:1}}
 .cp-refs li em{font-style:italic}
 
 /* ---------- How to use: the dose guide on its own ---------- */
@@ -544,7 +532,7 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .cp-what{grid-template-columns:1fr;gap:48px}
   .cp-dose{grid-template-columns:1fr}
   .cp-dose__panel--out{border-top:1px solid rgba(65,64,66,.08)}
-  .cp-subnav__brand,.cp-subnav__cta{display:none}
+  .cp-subnav__brand{display:none}
   .cp-subnav__links{margin-left:-12px;margin-right:-12px;flex:1}
 }
 @media (max-width:720px){
@@ -556,10 +544,12 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .section{padding:88px 0}
   .section-head{margin-bottom:36px}
   .footer-top{grid-template-columns:1fr;gap:36px}
-  .cp-hero__in{padding-top:36px;padding-bottom:32px}
+  .cp-hero__in{padding-top:36px;padding-bottom:28px}
+  .cp-hero__key{padding:18px 20px 28px}
   .cp-video__play{width:54px;height:54px}
   .cp-video__meta{gap:18px}
   .cp-benefit{padding:28px 22px 24px}
+  .cp-benefit__art{margin:-28px -22px 22px;padding:22px}
   .cp-dose__panel{padding:30px 22px 28px}
   .cp-dose__note{padding:16px 22px}
   .cp-dose__head{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:12px}
