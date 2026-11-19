@@ -219,7 +219,8 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 
 /* ---------- Hero: static banner with all of the text over it ----------
    Banner geometry (fractions of the 4280 x 1322 file): pure white left side up to x ~0.35, bright curtains
-   to ~0.48; photo (dog, floor, chocolate) to the right edge, the dog x ~0.49-0.80, the chocolate x ~0.84-0.93.
+   to ~0.48; photo (dog, floor, chocolate) to the right edge, the dog x ~0.49-0.80, the chocolate x ~0.84-0.93;
+   the carton and syringes x ~0.36-0.59, y ~0.69-0.95 (below the text, which ends about half-way down).
    From 1280px the banner is shown whole, full width (at least 420px tall, then it is pinned to the right
    and only the white left side is cropped); the dog stays clear of the 420px text column.
    Narrower, the text sits on top and the banner is pinned to the bottom, faded into the page at its top. */
@@ -238,7 +239,7 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 @media (min-width:1280px){
   .cp-hero{aspect-ratio:4280/1322;min-height:420px}
   .cp-hero__media img{object-position:100% 50%}
-  .cp-hero__in{height:100%;display:flex;align-items:center}
+  .cp-hero__in{height:100%;display:flex;align-items:center;padding-bottom:5vw}   /* centred, then lifted by 2.5vw */
   .cp-hero__copy{max-width:420px;padding:24px 0}
   .cp-hero h1{font-size:clamp(44px,3.3vw,64px);margin-bottom:16px}
   .cp-hero .lead{font-size:clamp(17px,1.05vw,19px);line-height:1.5;margin-bottom:24px;max-width:380px}
@@ -256,10 +257,10 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
   .cp-keymsg{font-size:clamp(20px,2.6vw,28px)}
 }
 @media (max-width:600px){
-  /* phones: x ~0.40-0.96 of the banner, so the dog and the chocolate are both whole */
-  .cp-hero__media{height:calc(100vw / 1.7)}
-  .cp-hero__media img{object-position:92% 100%}
-  .cp-hero .cp-hero__in{padding-top:32px;padding-bottom:calc(100vw / 1.7 * .8)}
+  /* phones: x ~0.33-0.95 of the banner, so the carton, the dog and the chocolate are all whole */
+  .cp-hero__media{height:calc(100vw / 2)}
+  .cp-hero__media img{object-position:87% 100%}
+  .cp-hero .cp-hero__in{padding-top:32px;padding-bottom:calc(100vw / 2 * .92)}
 }
 @media (prefers-reduced-motion:no-preference){
   .cp-hero__media img{animation:cp-hero-settle 1.8s var(--ease) both;transform-origin:100% 50%}
