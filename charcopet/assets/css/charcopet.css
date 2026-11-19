@@ -240,7 +240,7 @@ footer .footer-newsletter-link{display:inline-flex;align-items:center;gap:12px;f
 @media (min-width:1280px){
   .cp-hero{aspect-ratio:4280/1322;min-height:420px}
   .cp-hero__media img{object-position:100% 50%}
-  .cp-hero__in{height:68%;display:flex;align-items:center;padding-top:10px}   /* text centred between the top edge and the carton */
+  .cp-hero__in{height:100%;display:flex;align-items:flex-start;padding-top:clamp(22px,2.2vw,48px)}   /* top: the carton sits under the text */
   .cp-hero__copy{max-width:470px}
   .cp-hero h1{font-size:clamp(42px,3.2vw,64px);margin-bottom:12px}
   .cp-hero .lead{font-size:clamp(16.5px,1.05vw,20px);line-height:1.5;margin-bottom:18px;max-width:470px}
