@@ -149,7 +149,7 @@
 
       var parts = [];
       if (full) parts.push(plural(full, 'full syringe'));
-      if (rest) parts.push(fmt(rest) + ' ml from ' + (full ? 'another' : 'one syringe'));
+      if (rest) parts.push(fmt(rest) + 'ml from ' + (full ? 'another' : 'one syringe'));
       outSyr.textContent = parts.join(' + ');
       outCarton.textContent = plural(cartons, 'carton') + ' cover' + (cartons === 1 ? 's' : '') + ' this dose' +
         (spare ? ', with ' + (spare === 1 ? 'one syringe' : spare + ' syringes') + ' to spare.' : '.');
