@@ -13,7 +13,7 @@
   --forte-blue:#00abe6;
   --forte-blue-deep:#009cd2;
   --forte-blue-light:#44c8f5;
-  --forte-blue-ink:#007aa8;          /* AA-contrast blue for small text on white */
+  --forte-blue-ink:var(--forte-blue);  /* same blue as the Trade Login button (was #007aa8) */
   --forte-black:#414042;
   --forte-grey:#e6e7e8;
   --forte-grey-tint:#f7f8f8;
