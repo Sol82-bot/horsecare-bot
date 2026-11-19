@@ -111,7 +111,7 @@
     var outKg = $('#cpWeightOut'), outMl = $('#cpMl'), outSyr = $('#cpSyringeText'), outCarton = $('#cpCartonText');
     var barrels = $('#cpBarrels'), presets = $$('.cp-presets button');
     var fmt = function (n) { return (Math.round(n * 10) / 10).toString(); };
-    var plural = function (n, word) { return n + ' ' + word + (n === 1 ? '' : 's'); };
+    var plural = function (n, word) { return n + ' ' + word + (n === 1 ? '' : (/x$/.test(word) ? 'es' : 's')); };
 
     var ticks = '';
     for (var i = 1; i < 15; i++) {
@@ -151,7 +151,7 @@
       if (full) parts.push(plural(full, 'full syringe'));
       if (rest) parts.push(fmt(rest) + 'ml from ' + (full ? 'another' : 'one syringe'));
       outSyr.textContent = parts.join(' + ');
-      outCarton.textContent = plural(cartons, 'carton') + ' cover' + (cartons === 1 ? 's' : '') + ' this dose' +
+      outCarton.textContent = plural(cartons, 'box') + ' cover' + (cartons === 1 ? 's' : '') + ' this dose' +
         (spare ? ', with ' + (spare === 1 ? 'one syringe' : spare + ' syringes') + ' to spare.' : '.');
 
       barrelEls.forEach(function (el, idx) {
